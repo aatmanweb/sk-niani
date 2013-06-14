@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+/* GENERAL */
+* { margin: 0px; padding: 0px; text-rendering: optimizeLegibility; }
+img { border: 0px; vertical-align: bottom; }
+
+
+
+/* COPY FORMATTINGS */
+
+/* ERROR PAGES */
+
+/* WHAT IS THIS THING */
+body#bodyFor_what-is-this-thing .gray1 .inner,
+body#bodyFor_what-is-this-thing .gray2 .inner { width: 790px; margin: 0 auto; padding: 39px 0 80px; position: relative; }
+body#bodyFor_what-is-this-thing .mitSicLogo { padding-right: 330px !important; width: 460px !important; background: transparent url(/i/SIC.png) right 98px no-repeat; min-height: 320px; }
+body#bodyFor_what-is-this-thing #logo { width: 810px; height: 120px; margin: 0 auto 120px; }
+body#bodyFor_what-is-this-thing #logo:after { display: block; content:""; position: absolute; bottom: -89px; width: 810px; height: 200px; background: transparent url(/i/logo.png) center center no-repeat; }
+body#bodyFor_what-is-this-thing #logo h1 { display: block; overflow: hidden; height: 300px; }
+body#bodyFor_what-is-this-thing #logo h1 span { display: block; padding-top: 400px; }
+body#bodyFor_what-is-this-thing #aGraph { -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; padding: 0px 10px 0px; background-color: #fff; margin-top: 20px; overflow: hidden; max-height: 0;}
+    #rssTwit { position: absolute; top: -21px; right: 0; width: 150px; text-align: right; }
+    #rssTwit img { margin-left: 10px; }
+    #updateStats { margin-top: 37px; }
+  #indexList { list-style: none inside; padding-left: 0; }
+  #indexList li.page { padding: 0px; float: left; width: 212px; margin: 0; }
+  #indexList li.accordion { padding: 0px; float: left; width: 150px; margin: 0; height: 60px; display: block; position: relative; }
+  #indexList li.accordion a { display: block; position: absolute; height: 70px; width: 120px; background: transparent url(/i/accordion.gif) left top no-repeat; top: 0; left: 5px; overflow: hidden; }
+  #indexList li.accordion a span { display: block; position: relative; height: 70px; width: 120px; background: transparent url(/i/accordion.gif) left bottom no-repeat; }
+  #indexList li.accordion a:hover span { display: none; }
+  #indexList li.page.loadLater { height: 60; width: 0; overflow: hidden; position: absolute; top: 0; left: 0; }
+  #indexList li.page.last { width: auto; }
+  #indexList li.page a { display: block; padding: 5px 0 20px 0; float: left; position: relative; }
+  #indexList li.page a .icon {
+	display: block;
+	height: 60px;
+	width: 60px;
+	margin-right: 10px;
+	float: left;
+	/* [disabled]box-shadow: 1px 2px 2px #000000; */
+	background-color: #a2a49a;
+}
+  #indexList li.page a:hover .icon { box-shadow: 2px 4px 2px #000000; -moz-box-shadow: 2px 4px 2px #000000;}
+  #indexList li.page a .text { display: block; float: left; position: absolute; font-size: 25px; line-height: 23px; top: 6px; left: 70px; }
+  #indexList li.page a .text .fromTo { font-size: .7em; display: block; line-height: 17px; }
+  #indexList li.page a .text .fromTo span { white-space: nowrap; }
+  #indexList li.page a .text .fromTo span sup { position: relative; top: 3px; line-height: 0; }
+  #indexList li.page a .text .fromTo span em { position: relative; font-style: normal; text-shadow: none; color: #000; size: .7em; }
+  #indexList li.page a:hover .text .fromTo span em { position: relative; top: 2px; left: 1px; }
+
+/* PARALLAXER */ ul#panelControl li a.pagination span
+body#bodyFor_tale {}
+body#bodyFor_tale #theAll { position: relative;}
+body#bodyFor_tale a { text-shadow: none; top: 0; left: 0; }
+  #mainMenu { position: fixed; top: 0px; left: 0; z-index: 950; }
+  #mainMenu img { width: 69px; height: 70px; z-index: 99; position: absolute; left: 0; top: 0; -ms-interpolation-mode: bicubic; }
+  #mainMenu .jimmyStewart {
+	width: 45px;
+	height: 45px;
+	position: absolute;
+	z-index: 50;
+	left: 0;
+	top: 0;
+	/* [disabled]background: url(/i/jimmyIsConfused.jpg) no-repeat left top; */
+	text-indent: -9999px;
+}
+  ul#panelControl { position: fixed; bottom:0px; left: 70%; z-index: 999; text-decoration:none; font-size:11px; font-family:Arial, Helvetica, sans-serif;}
+      ul#panelControl li { float: left; display: block; padding-right: 3px; }
+      ul#panelControl li a { text-decoration:none; display: block; background-color: #ef2748; color: #fff; padding:2px 6px; text-align: center; -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px; }
+      ul#panelControl li a.clicked {color: rgba(255,255,255,0.4); background-color: #ef2748; }
+      ul#panelControl li a.hovering {
+	color: #000;
+	background-color: #fff;
+}
+      ul#panelControl li a:hover { text-decoration: none; opacity: 1; background-color: #fff; color: #000;}
+      ul#panelControl li a span { display: block; padding-top: 2px; }
+      ul#panelControl li a.pagination { width: auto; font-size: .8em; white-space: nowrap; }
+      ul#panelControl li a.pagination span { padding: 2px 10px 0px; }
+
+  #overflowControl { overflow: hidden; position: relative; height: 400px; }
+  #bannerSling { position: fixed; top: 15px; right: 15px; }
+  #layerSling {}
+  #layerSling>div { display: block; position: absolute; top: 0px; left: 0; }
+
+  #layerSling .p { height: 400px; float: left; position: relative; overflow: visible; text-align: center; }
+  #layerSling .p img {
+	display: block;
+	position: absolute;
+	top: 1px;
+	left: 0;
+}
+      #layerA .p { width: 300px; }
+    #layerB { /*height: 400px;*/ }
+    #layerB .p { width: 400px; }
+    #layerB .p .narrative { position: absolute; top: 400px; left: 0; width: 360px; line-height: 25px; padding: 20px; text-align: left; letter-spacing: normal; }
+      #layerC .p { width: 500px; }
+      #layerD .p { width: 600px; }
+      #layerE .p { width: 700px; }
+
+body#bodyFor_tale a.absoButton { position: absolute; display: block; right: 420px; left: auto; top: 420px; white-space: nowrap; float: left; background-color: #000; color: #fff; line-height: 22px; }
+body#bodyFor_tale a.absoButton span { display: block; padding: 3px 15px 4px; float: left; }
+body#bodyFor_tale a.absoButton:hover { text-decoration: none; background-color: #fff; color: #000;}
+body#bodyFor_tale #paginationPrev {}
+body#bodyFor_tale #paginationNext, body#bodyFor_tale #paginationMore { right: auto; left: 420px;}
+
+body#bodyFor_tale a.inlineButton { background-color: #000; color: #fff; text-decoration: none; font-size: .9em; }
+body#bodyFor_tale a.inlineButton span { padding: 3px 12px 4px; }
+body#bodyFor_tale a.inlineButton:hover { background-color: #fff; color: #000; text-decoration: none; }
+
+
+/* OTHER STUFF */
+
+body#bodyFor_just-the-story-maam .gray1 .inner,
+body#bodyFor_just-the-story-maam .gray2 .inner { width: 360px; margin: 0 auto; padding: 15px 0; position: relative; }
+body#bodyFor_just-the-story-maam h2 { position: absolute; top: 0; right: 380px; white-space: nowrap; padding-top: 0.4em; }
+body#bodyFor_just-the-story-maam h2 + p { margin-top: 0; }
+body#bodyFor_just-the-story-maam #copyrightly { width:430px; }

@@ -1,0 +1,119 @@
+<% @page_title = "Edit Advertisement" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back To Select Location", {:action => 'index'}, :class => 'back-to-menu') %>
+<div class="top-linebar">Create Advertisement</div>
+<div style="clear:both;"></div>
+
+</div>
+
+<div class="innerpage-form-background">
+   <%= form_for(:advertise, :url => {:action => 'update', :id => @advertise.id}, :html => {:multipart => true}) do |f| %>
+      <%= error_messages_for(@advertise) %>
+
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+		<tr>
+		<td width="30%" align="right">&nbsp;</td>
+		<td width="4%">&nbsp;</td>
+		<td width="66%" align="left">&nbsp;</td>
+		</tr>
+		<tr>
+		<td align="right"><%= f.label('Name') %></td> 
+		<td>&nbsp;</td>
+		<td align="left"><%= f.text_field(:adv_name) %>  </td>
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td align="right">  <%= f.label("Type") %>  </td>
+		<td>&nbsp;</td>
+		<td align="left">
+		<%= f.radio_button :adv_type, 'image', :checked => true %> 
+		<%= label :adv_type_image, 'image' %>
+		<%= f.radio_button :adv_type, 'flash' %>
+		<%= label :adv_type_flash, 'flash' %>
+		</td>	
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td align="right">  <%= f.label(:adv_url) %></td>
+		<td>&nbsp;</td>
+		<td align="left">  <%= f.file_field(:adv_url) %>		</td>
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>	
+		<tr>
+		<td align="right">  <%= f.label(:flashimage) %></td>
+		<td>&nbsp;</td>
+		<td align="left">  <%= f.file_field(:flashimage) %>		</td>
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td align="right">  <%= f.label(:adv_position) %></td>
+		<td>&nbsp;</td>
+		<td align="left">
+		<% if(@location_type != "pages") %>
+		<%= f.select(:adv_position, [["Top"], ["Bottom"]], :include_blank => "Select") %>
+		<% else %>
+		<%= f.select(:adv_position, [["Bottom"]], :include_blank => "Select") %>
+		<% end %>
+		</td>
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td align="right">Selected location :     </td>
+		<td>&nbsp;</td>
+		<td align="left">
+		<% location_type = @advertise.location_type %>
+		<%= f.hidden_field(:location_type, :value => location_type) %> 
+		<% location_id = @advertise.location_id %>
+		<%= f.label(:location_id, location_id ) %>
+		<%= f.hidden_field(:location_id, :value => location_id ) %>                
+		</td>
+		</tr>
+
+		<tr>
+		<td height="20"></td>
+		<td></td>
+		<td></td>
+		</tr>
+		<tr>
+		<td align="right"><%= f.label(:expiry_date) %> :     </td>
+		<td width="20">&nbsp;</td>
+		<td align="left"> 
+		<%= f.text_field(:expiry_date, :value => Date.today) %>
+		</td>
+		</tr>
+      </table>
+
+      <br/> <br/>
+      <div class="form-buttons">
+	<%= f.submit("submit", :class => 'innerpage-form-button')%>
+      </div>
+
+   <% end %>
+</div>

@@ -1,0 +1,52 @@
+<%= error_messages_for(@subsubjects) %>
+
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+    <tr>
+    <td width="30%" align="right">&nbsp;</td>
+    <td width="4%">&nbsp;</td>
+    <td width="66%" align="left">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td width="32%" align="right"><%= f.label(:subject_id, "Subject") %></td>
+    <td width="2%">&nbsp;</td>
+    <td width="66%" align="left"><%= f.select(:subject_id, @subjects.collect {|s| [s.name, s.id]}, {}, { :class => 'innerpages-text-dropdown' } ) %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td width="32%" align="right"><%= f.label(:name) %></td>
+    <td width="2%">&nbsp;</td>
+    <td width="66%" align="left"><%= f.text_field(:name, :class => 'innerpages-text-input') %></td>
+    </tr>
+
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td width="32%" align="right"><%= f.label(:position) %></td>
+    <td width="2%">&nbsp;</td>
+    <td width="66%" align="left"><%= f.select(:position, 1..@subsubjects_count, {}, {:class => 'innerpages-text-dropdown'}) %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td width="32%" align="right"><%= f.label(:visible) %></td>
+    <td width="2%">&nbsp;</td>
+    <td width="66%" align="left"><%= f.check_box(:visible, :class => 'regular-checkbox') %></td>
+    </tr>
+
+    </table>
+

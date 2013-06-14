@@ -1,0 +1,37 @@
+<% @page_title = "Advertisement List" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back To Select Location", {:controller => "advertisements", :action => 'index'}, :class => 'back-to-menu') %>
+<div class="top-linebar">Advertisement</div>
+
+<div style="clear:both;"></div>
+</div>
+
+<div class="subject list" style='margin-top: 50px;'>
+
+  <table class="listing" summary="Advertisement list">
+    <tr class="header-top">      
+      <th>Adv name</th>
+      <th>location</th>
+      <th>location name</th>
+      <th>Position</th>
+      <th>Actions</th> 
+    </tr>
+    <% @advertise.each do |advertise| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= advertise.adv_name %></td> 
+      <td class="center"><%= advertise.location_type %></td> 
+      <td class="center"><%= advertise.location_id %></td>
+      <td class="center"><%= advertise.adv_position %></td>
+      <td class="actions">
+        <%= link_to("Edit", {:action => 'edit', :id => advertise.id, :location_type => advertise.location_type }, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'destroy', :id => advertise.id}, :confirm => 'are you sure about deletion', :class => 'action delete') %>
+      </td> 
+    </tr>
+    <% end %>
+  </table>
+
+</div>
+<div style = "margin-top: 20px;"><p> <%= will_paginate @advertise %></p> </div>
+

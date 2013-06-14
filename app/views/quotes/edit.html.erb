@@ -1,0 +1,17 @@
+<% @page_title = "Quotes Edit" %>
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Editing Quote</div>
+
+<div style="clear:both;"></div>
+</div>
+
+<div class="innerpage-form-background">
+<%= render 'form' %>
+
+
+<%= link_to 'Show', @quote, :class => 'action edit'  %> |
+<%= link_to 'Back', quotes_path, :class => 'action edit' %>
+
+</div>

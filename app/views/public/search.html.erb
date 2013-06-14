@@ -1,0 +1,312 @@
+<style>
+.seach-result01{ background: #DEDEDE; padding:20px 30% 20px 30px; color:#222; text-align: justify; font-family:kalinga, arial; font-size:14px;}
+.seach-result02 { background: #f5f5f5; padding:20px 30% 20px 30px; color:#222; text-align: justify; font-family:kalinga, arial; font-size:14px;}
+
+</style>
+<%= render(:partial => 'layouts/aside') %>
+<div class="main-wrapper-inner">
+<div id="contetWrap-about">
+<div style="margin:50px 0 50px 0;">
+<div style="margin-left:30px;">
+<br/>
+
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;Search based on
+<% @searchbasedon.each do |f| %>
+<%= f.name %>
+<% end %>
+</p>
+
+<% if @pageactiontype == 'quotations' %>
+<ul style="margin-left:15px;">
+<% @pageactiontypecontent2.each do |author| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+author.id.to_s+'?type=author' %>
+<li><br />
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<%= link_to author.author_name.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(author.quotes.count.to_s,'Quote') %>
+<br/>
+<% author.quotes.limit(1).each do |quote| %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<%= quote.quote.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+</p><br />
+</li>
+<% end %>
+<% end %>
+<% if @pageactiontypecontent3.any? %>
+<% @pageactiontypecontent3.each do |topic| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+topic.id.to_s+'?type=topic' %>
+<li><br />
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<%= link_to topic.topic_name.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(topic.quotes.count.to_s,'Quote') %>
+<br/>
+<% topic.quotes.limit(1).each do |quote| %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<%= quote.quote.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+</p><br />
+</li>
+<% end %>
+<% end %>
+<% end %>
+
+<% @pageactiontypecontent.each do |g3| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+g3.author_id.to_s+'?type=author' %>
+<li><br />
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<%= link_to g3.author.author_name, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(g3.author.quotes.count.to_s,'Quote') %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<%=  g3.title.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+</p><br />
+</li>
+<% end %>
+</ul>
+<% else %>
+<% if @pagesearchspecific.any? %>
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;Page from particular subject</p>
+<ul style="margin-left:15px; margin-top:20px;">
+<% @pagesearchspecific.limit(5).each do |g2|  %>
+<li>
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<% if((g2.subject.name == 'Events')||(g2.subject.name == 'Inventions')) %>
+<%= link_to g2.name, :action => 'events', :id =>  g2.id  %>
+<% elsif(g2.subject.name == 'G Knowledge') %>
+<%= link_to g2.name, :action => 'gkpages', :id =>  g2.id  %>
+<% else %>
+<%= link_to g2.name, :action => 'showpages', :id =>  g2.id  %>
+<% end %>
+</span>&nbsp;
+<span style="color:#ed1b24;"><%= g2.subject.name %></span>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<% if g2.subject.name == 'G Knowledge' %>
+<% @intro = Sanitize.clean(g2.intro) %>
+<%= @intro.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+<% else %>
+<%= g2.intro.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+<% end %>
+</p><br /><br />
+</li>
+
+
+<% end %>
+
+<% end %>
+</ul>
+<% end %>
+
+<!---------- particular page search result -------------->
+<p style="font-size:20px;"> YOU HAVE SEARCHED AS:&nbsp;&nbsp;<span style="color:#ed1b24;"><%=  @strisrt %></span></p><br/>
+<% @seperateword %>
+<br /><br />
+<% if @pagecompletesamestring.any? %>
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;Page from particular subject</p>
+<ul style="margin-left:15px; margin-top:20px;">
+<% @pagecompletesamestring.each do |g2|  %>
+<li>
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<% if g2.subject.name == 'Inventions' || g2.subject.name == 'events' %>
+<%= link_to g2.name, :action => 'events', :id =>  g2.id  %>
+<% elsif g2.subject.name == 'G Knowledge' %>
+<%= link_to g2.name, :action => 'gkpages', :id =>  g2.id  %>
+<% else %>
+<%= link_to g2.name, :action => 'showpages', :id =>  g2.id  %>
+<% end %>
+</span>&nbsp;
+<span style="color:#ed1b24;">
+<%= g2.subject.name %>
+</span>
+<p style="text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<% if g2.subject.name == 'G Knowledge' %>
+<% @intro = Sanitize.clean(g2.intro) %>
+<%= @intro.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+<% else %>
+<%= g2.intro.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+<% end %>
+</p><br /><br />
+</li>
+<% end %>
+<% end %>
+</ul>
+<br/>
+
+<% if @quotesearch.any? %>
+
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;Quote search Result</p>
+<ul style="margin-left:15px;">
+<% @quoteauthorsearch.each do |author| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+author.id.to_s+'?type=author' %>
+<% replacements = [ [@strisrt, '<b style="color:#ed1b24;">'+@strisrt+'</b>'], [@strisrt.capitalize, '<b style="color:#ed1b24;">'+@strisrt.capitalize+'</b>'] ] %>
+<% replacements.each {|replacement| author.author_name.gsub!(replacement[0], replacement[1]) } %>
+<li><br />
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<%= link_to author.author_name.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(author.quotes.count.to_s,'Quote') %>
+<br/>
+<% author.quotes.limit(1).each do |quote| %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<%= quote.quote.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+</p><br />
+</li>
+<% end %>
+<% end %>
+
+<% @quotesearch.each do |g3| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+g3.author_id.to_s+'?type=author' %>
+<li><br />
+<span style="text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<%= link_to g3.author.author_name, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(g3.author.quotes.count.to_s,'Quote') %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<% replacements = [ [@strisrt, '<b style="color:#ed1b24;">'+@strisrt+'</b>'], [@strisrt.capitalize, '<b style="color:#ed1b24;">'+@strisrt.capitalize+'</b>'] ] %>
+<% replacements.each {|replacement| g3.quote.gsub!(replacement[0], replacement[1]) } %>
+<%=  g3.quote.html_safe %>
+</p><br />
+</li>
+<% end %>
+<% end %> 
+</ul>
+<br /><br /><br /><br />
+
+<% if @pageactiontypecontent3.any? %>
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;Quote topic search</p>
+<ul style="margin-left:15px;">
+<% @pageactiontypecontent3.each do |topic| %>
+<% @Quotationsurl= root_url+'public/quotations/' %>
+<% @Quotationsurl= @Quotationsurl+topic.id.to_s+'?type=topic' %>
+<li><br />
+<span style=" text-align: justify; font-family:kalinga, arial; font-size:18px; color:#111; background:#ccc; padding:3px 7px;">
+<% replacements = [ [@strisrt, '<b style="color:#ed1b24;">'+@strisrt+'</b>'], [@strisrt.capitalize, '<b style="color:#ed1b24;">'+@strisrt.capitalize+'</b>'] ] %>
+<% replacements.each {|replacement| topic.topic_name.gsub!(replacement[0], replacement[1]) } %>
+<%= link_to topic.topic_name.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe, url_with_protocol(@Quotationsurl) %>
+</span>
+</li>
+<%= pluralize(topic.quotes.count.to_s,'Quote') %>
+<br/>
+<% topic.quotes.limit(1).each do |quote| %>
+<li>
+<p style=" text-align: justify; font-family:kalinga, arial; font-size:14px; margin-right:40%; margin-top:10px;">
+<%= quote.quote.gsub(@strisrt,('<b style="color:#ed1b24;">'+@strisrt+'</b>')).html_safe %>
+</p><br />
+</li>
+<% end %>
+<% end %>
+</ul>
+<% end %>
+
+</div>
+<ul>
+<p style="font-family:kalinga, arial; font-size:19px; color:#222; border-left:6px solid #ed1b24; ">&nbsp;general search</p>
+<%@sectioncompletesamestring %>
+<% @pageid %>
+<% @gotuniquesection = @sectioncompletesamestring.uniq{|x| x.id} %>
+<% @gotuniquesection.each do |grant| %>
+<% @current_word =  @pageid.detect {|w| w.id == grant.page_id} %>
+<% if grant.page.subject.name == 'Events' || grant.page.subject.name == 'Inventions' %>
+<% @furl= root_url+'/public/events/'+grant.page_id.to_s %>
+<% elsif grant.page.subject.name == 'G Knowledge' %>
+<% @furl= root_url+'/public/gkpages/'+grant.page_id.to_s %>
+<% else %>
+<% @furl= root_url+'/public/showpages/'+grant.page_id.to_s+'#'+grant.name.gsub(/([_@#!%()\-=;><,' '{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/,'-') %>
+<% end %>
+<li class="<%= cycle('seach-result01', 'seach-result02') %>">
+<%= link_to @current_word.name, url_with_protocol(@furl), :style=>'color:#ed1b24; font-family:kalinga, arial; font-size:16px;'  %><br /><br />
+<% str = Sanitize.clean(grant.content).to_s %> 
+<% @searchstringindex = str.to_s.index(@strisrt)%>
+<% @searchstr = @strisrt %>      
+<% if @searchstringindex %>
+<% if @searchstringindex >= 10 %>
+<% @trunstr = truncate(str[@searchstringindex-10..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b style="color:#ed1b24;">'+@searchstr+'</b>'))).html_safe %><br />
+<% else %>
+<% @trunstr = truncate(str[0..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;"><%=  "..." %></span><%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+</li>	
+<% end%>
+<br>
+<% elsif @searchstringindex.nil? %>
+<% @searchstringindex = str.to_s.index(@strisrt.capitalize)%>
+<% @searchstr = @strisrt %>      
+<% if @searchstringindex %>
+<% if @searchstringindex >= 10 %>
+<% @trunstr = truncate(str[@searchstringindex-10..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% else %>
+<% @trunstr = truncate(str[0..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% end%>
+<br>
+<% elsif @searchstringindex.nil? %>
+<% @searchstringindex = str.to_s.index(@strisrt.upcase)%>
+<% @searchstr = @strisrt %>      
+<% if @searchstringindex %>
+<% if @searchstringindex >= 10 %>
+<% @trunstr = truncate(str[@searchstringindex-10..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% else %>
+<% @trunstr = truncate(str[0..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% end%>
+<br>
+<% end %>
+<% elsif @searchstringindex.nil? %>
+<% @searchstringindex = str.to_s.index(@strisrt.downcase)%>
+<% @searchstr = @strisrt %>      
+<% if @searchstringindex %>
+<% if @searchstringindex >= 10 %>
+<% @trunstr = truncate(str[@searchstringindex-10..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% else %>
+<% @trunstr = truncate(str[0..@searchstringindex+420],:separator => ' ', :length => 420) %>
+<span style="font-weight:900;">
+<%=  "..." %>
+</span>
+<%= (@trunstr.gsub(@searchstr,('<b>'+@searchstr+'</b>'))).html_safe %><br />
+<% end%>
+<br>
+<% end %>
+<% end %>
+<% end %>
+<% end %>
+</ul>
+
+</div>
+</div>
+</div>

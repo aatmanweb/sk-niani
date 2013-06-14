@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html class="wf-kingthingspetrockregular-n4-active wf-active" xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title></title>
+    <meta name="description" content="A webtime story">
+
+  
+
+    <script src="js/jquery_003.js" type="text/javascript"></script>
+    <script src="js/jquery_002.js" type="text/javascript"></script>
+	<script src="js/jquery_004.js" type="text/javascript"></script>
+
+    
+    <script src="js/parallaxer.js" type="text/javascript"></script>
+    <script type="text/javascript" charset="utf-8">
+    /* <![CDATA[ */
+
+        $(document).ready(function(){
+    setTimeout(function() { p5slideshow = new popSlideshower('p5slideshow', 5); }, 0);
+    setTimeout(function() { p6slideshowAlt = new popSlideshower('p6slideshowAlt', 6); }, 2000);
+});
+        window.scrollSwing = 550;
+
+        function panelEvSniffer(){
+          var scroll = $(window).scrollLeft();
+                
+
+if( scroll >= -200 && scroll < 200 && p.panelHovered != 1 ){
+p.panelHovered = 1;
+p.panelNarr('#c_1');
+
+$('#theAll').stop().animate({ 'background-color' : '#f4f4f4' }, 600);
+ }
+
+else if( scroll >= 200 && scroll < 600 && p.panelHovered != 2 ){
+p.panelHovered = 2;
+p.panelNarr('#c_2');
+popIn('.loboIsOut',700);
+popOut('.loboIsIn',300);
+ }
+
+else if( scroll >= 600 && scroll < 1000 && p.panelHovered != 3 ){
+p.panelHovered = 3;
+p.panelNarr('#c_3');
+popIn('.loboIsIn',700);
+popOut('.loboIsOut',300);
+ }
+
+else if( scroll >= 1000 && scroll < 1400 && p.panelHovered != 4 ){
+p.panelHovered = 4;
+p.panelNarr('#c_4');
+
+ }
+
+else if( scroll >= 1400 && scroll < 1800 && p.panelHovered != 5 ){
+p.panelHovered = 5;
+p.panelNarr('#c_5');
+
+ }
+
+else if( scroll >= 1800 && scroll < 2200 && p.panelHovered != 6 ){
+p.panelHovered = 6;
+p.panelNarr('#c_6');
+
+ }
+
+else if( scroll >= 2200 && scroll < 2600 && p.panelHovered != 7 ){
+p.panelHovered = 7;
+p.panelNarr('#c_7');
+
+ }
+
+else if( scroll >= 2600 && scroll < 3000 && p.panelHovered != 8 ){
+p.panelHovered = 8;
+p.panelNarr('#c_8');
+
+ }
+
+else if( scroll >= 3000 && scroll < 3400 && p.panelHovered != 9 ){
+p.panelHovered = 9;
+p.panelNarr('#c_9');
+
+ }
+
+else if( scroll >= 3400 && scroll < 3800 && p.panelHovered != 10 ){
+p.panelHovered = 10;
+p.panelNarr('#c_10');
+
+ }        }
+    /* ]]> */
+    </script>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=yes"><!-- iPad less broken this way, however iPhone looks like shit, oops -->
+    <link href="css/theHoboestOfLobos.css" rel="stylesheet" type="text/css" media="all">
+
+<script type="text/JavaScript">
+function fireEvent(obj,evt){
+	
+	var fireOnThis = obj;
+	if( document.createEvent ) {
+	  var evObj = document.createEvent('MouseEvents');
+	  evObj.initEvent( evt, true, false );
+	  fireOnThis.dispatchEvent(evObj);
+	} else if( document.createEventObject ) {
+	  fireOnThis.fireEvent('on'+evt);
+	}
+}
+
+function activate(){
+document.getElementById('panelControl').style.visibility='hidden';
+fireEvent(document.getElementById("act1"),'click');
+fireEvent(document.getElementById("act2"),'click');
+fireEvent(document.getElementById("act3"),'click');
+fireEvent(document.getElementById("act4"),'click');
+fireEvent(document.getElementById("act5"),'click');
+fireEvent(document.getElementById("act6"),'click');
+fireEvent(document.getElementById("act7"),'click');
+fireEvent(document.getElementById("act8"),'click');
+fireEvent(document.getElementById("act9"),'click');
+fireEvent(document.getElementById("act10"),'click');
+fireEvent(document.getElementById("act1"),'click');
+window.setTimeout("activate1()", 50000);
+}
+function activate1(){
+document.getElementById('panelControl').style.visibility='visible';
+}
+
+
+</script>
+    </head>
+<body id="bodyFor_tale" onload="activate();">
+  <div id="theAll" style=" width: 5520px; height: 943px;">
+    <noscript><div style="color: #fff; display: block; padding: 100px; text-align: center; font-size: 30px;">You MUST enable Javascript for this site to make sense!</div></noscript>
+                <ul id="panelControl" >
+                  <li><a href="#" title="Previous panel" class="lazyPrev"><span>&lt;</span></a></li>
+            <li><a class="hovering clicked" href="#c_1" id="act1" title="Panel 1"><span>1</span></a></li><li><a href="#c_2" id="act2" title="Panel 2"><span>2</span></a></li><li><a href="#c_3" id="act3" title="Panel 3"><span>3</span></a></li><li><a href="#c_4" id="act4" title="Panel 4"><span>4</span></a></li><li><a href="#c_5" id="act5" title="Panel 5"><span>5</span></a></li><li><a href="#c_6" id="act6" title="Panel 6"><span>6</span></a></li><li><a href="#c_7" id="act7" title="Panel 7"><span>7</span></a></li><li><a href="#c_8" id="act8" title="Panel 8"><span>8</span></a></li><li><a href="#c_9" id="act9" title="Panel 9"><span>9</span></a></li><li><a href="#c_10" id="act10" title="Panel 10"><span>10</span></a></li><li><a href="#c_2" id="act" title="Next panel" class="lazyNext"><span>&gt;</span></a></li>
+              </ul>
+        <div style="width: 5520px;" id="overflowControl">
+            <div style="position: relative; left: 760px;" id="layerSling">
+                <div id="layerA" style="width: 3000px; left: 50px;">
+<div class="p rowId8"><img src="images/10.jpg" alt="" style="left: -410px;"></div>
+<div class="p rowId9"><img src="images/09.jpg" alt=""></div>
+<div class="p rowId10"><img src="images/7.jpg" alt=""></div>
+<div class="p rowId11"><img src="images/8.jpg" alt=""></div>
+<div class="p rowId12"><img src="images/23.jpg" alt=""></div>
+<div class="p rowId13"><img src="images/23_1.jpg" alt="" style="left: 0px;"></div>
+<div class="p rowId15"><img src="images/page2-pannel7-cell1.jpg" alt="" style="left: 0px;">
+
+<img src="images/30.png" alt="" style="left: -420px; transform: none; display: block;" class="p6slideshowAlt ploink1"><img src="images/24.gif" alt="" style="left: -365px; top:-20px; display: none; transform: scale(0.01, 0.01);" class="p6slideshowAlt ploink2"><img src="images/25.png" alt="" style="left: -555px; transform-origin: 360px 300px; display: none; transform: scale(0.01, 0.01);" class="p6slideshowAlt ploink3"></div>
+<div class="p rowId18"><img src="images/page2-pannel8-cell1.jpg" alt=""></div>
+<div class="p rowId14"><img src="images/page2-pannel9-cell1.jpg" alt=""></div>
+<div class="p rowId19"><img src="images/34.jpg" alt=""></div>
+</div>
+
+<div id="layerB" style="width: 4000px">
+<div class="p rowId8" id="c_1"><img src="images/3.jpg" alt="" style="left: -697px;"></div>
+<div class="p rowId9" id="c_2"><img src="images/401.gif" alt="" style="left: 0px;">
+
+<img src="images/11.png" alt="" class="loboIsOut" style="left: 60px;-moz-transform-origin: 71px 397px;-webkit-transform-origin: 71px 397px;-ms-transform-origin: 71px 397px;-o-transform-origin: 71px 397px; transform-origin: 71px 397px;"></div>
+<div class="p rowId10" id="c_3"><img src="images/4.gif" alt="" style="left: 0px;"><img src="images/53.png" alt="" class="loboIsIn" style="display: none; left: -30px; top: 205px; -webkit-transform-origin: 55px 11px;-moz-transform-origin: 55px 11px;-o-transform-origin: 55px 11px;transform-origin: 55px 11px;"></div>
+<div class="p rowId11" id="c_4"></div>
+<div class="p rowId12" id="c_5"><img src="images/22.png" alt="" style="left: 200px; top: 60px;"></div>
+<div class="p rowId13" id="c_6"></div>
+<div class="p rowId15" id="c_7"><img src="images/32.png" alt="" style="left: 166px; top: 0px;"></div>
+<div class="p rowId18" id="c_8"></div>
+<div class="p rowId14" id="c_9"></div>
+<div class="p rowId19" id="c_10"><img src="images/50.png" alt="" style="left: 0px; top:60px;"><img src="images/60.gif" width="300" height="250" style=" top:100px; left:300px" alt=""><div style="display: none;" class="narrative solidCopy"></div></div>
+</div>
+
+<div id="layerC" style="width: 5000px; left: -50px;">
+<div class="p rowId8"><img src="images/15.png" alt="" style="left: -350px;"></div>
+<div class="p rowId9">&nbsp;</div>
+<div class="p rowId10"><img src="images/11_1.png" alt="" style="left: 25px; top:100px; -moz-transform-origin: 68px 398px;-webkit-transform-origin: 68px 398px;-ms-transform-origin: 68px 398px;-o-transform-origin: 68px 398px; transform-origin: 68px 398px" class="loboIsIn"></div>
+<div class="p rowId11"><img src="images/99.gif" alt="" style="left:-200px"></div>
+<div class="p rowId12"><img src="images/page2-pannel5-cell2.png" alt="" style="left: 168px; top: 117px;"></div>
+<div class="p rowId13">&nbsp;</div>
+<div class="p rowId15"><img src="images/28.gif" alt="" style="left: -100px;"></div>
+<div class="p rowId18"><img src="images/51.gif" alt="" style="left: 250px; top:160px;"></div>
+<div class="p rowId19">&nbsp;</div>
+</div>
+
+<div id="layerD" style="width: 6000px; left: -100px;">
+<div class="p rowId8"><img src="images/photographar.png" alt="" style="left: 185px;"></div>
+<div class="p rowId9"><img src="images/2.png" alt="" style="left: 0px;"></div>
+<div class="p rowId10"><img src="images/5-2.png" alt="" style="left: -220px; top: 200px" /></div>
+<div class="p rowId11"><img src="images/20.gif" alt="" style="left: 40px;"></div>
+<div class="p rowId12">&nbsp;</div>
+<div class="p rowId13">&nbsp;</div>
+<div class="p rowId15"><img src="images/26.png" alt="" style="left: -250px;"></div>
+<div class="p rowId18">&nbsp;</div>
+<div class="p rowId14">&nbsp;</div>
+<div class="p rowId19">&nbsp;</div>
+</div>
+
+<div id="layerE" style="width: 7000px; left: -150px;">
+<div class="p rowId8"><img src="images/page2-pannel1-cell4.png" alt="" style="left: -85px; top: 363px;" /></div>
+<div class="p rowId9">&nbsp;</div>
+<div class="p rowId10"><img src="images/6.gif" alt="" style="left: 370px;"></div>
+<div class="p rowId11">&nbsp;</div>
+<div class="p rowId12">
+			<img src="images/page2-pannel5-cell4.gif" alt="" style="left: 0px;">
+			<img src="images/16_1.png" alt="" class="p5slideshow ploink1" style="left: -2px; transform: none; display: block;">
+            <img src="images/16_2.png" class="p5slideshow ploink2" alt="" style="left: 0px; display: none; transform: scale(0.01, 0.01);">
+            <img src="images/16_1.png" class="p5slideshow ploink3" alt="" style="left: 0px; display: none; transform: scale(0.01, 0.01);">
+</div>
+<div class="p rowId13">&nbsp;</div>
+<div class="p rowId15"><img src="images/29.png" alt="" style="left: 457px; top: 30px;"></div>
+<!--<div class="p rowId18"><img src="images/31.gif" alt="" style="left: 310px; top: 75px;"></div>
+--><div class="p rowId14"><img src="images/33.png"alt="" style="left: -100px;"></div>
+<div class="p rowId19"><img src="images/54.gif" alt="" style="left: -150px;"></div>
+</div>
+
+            </div>
+        </div>
+      <!-- End Piwik Tag -->
+      </div>
+</body></html>

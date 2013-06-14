@@ -1,0 +1,79 @@
+<% @page_title = "Quotes of: #{@name.topic_name}" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back ", {:controller => 'quotes', :action => 'index'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Sorted By Topic</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div style='height:80px; background:#e2e2e2;'>
+<div style="float:left; margin-left:30px; margin-top:20px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px; ">
+Sorted By Topic&nbsp;<%= select_tag :second_select, options_from_collection_for_select(@topics, "id", "topic_name"), :include_blank => true,
+      :'data-remote' => 'true',
+      :'data-url' => url_for(:controller => 'quotes', :action => 'sortbytopic' ),
+      :'data-type' => 'json',
+      :onchange => "redirectToTopic(this.value)",
+      :class => 'innerquotes-text-dropdown' 
+%>
+ 
+<%= javascript_tag do %>
+  function redirectToTopic(topicId){
+ var pathArray = window.location.pathname.split( '/' );
+var secondLevelLocation = pathArray[3];
+var newPathname = "";
+for ( i = 1; i < pathArray.length-1; i++ ) {
+  newPathname += "/";
+  newPathname += pathArray[i];
+}
+
+ window.location=newPathname+"/" + topicId+ "?id="+ topicId;
+    
+  } 
+<% end %>
+</div>
+<%= link_to 'Add New Quote', new_quote_path, :class => 'add-new-subject' %> 
+</div>
+
+<div class="subject list">
+<table>
+  <tr class="header-top">
+    <td>Topic</td>
+    <td>Author</td>
+    <td>Language</td>
+    <td>Title</td>
+    <td>Quote</td>
+    <td>Information</td>
+    <td>Publish on</td>
+    <td>Actions</td>
+  </tr>
+
+<% @quote.each do |quote| %>
+
+<tr class="<%= cycle('odd', 'even') %>">
+    
+      <td><%= quote.topic.topic_name %></td>
+      <td><%= quote.author.author_name %></td>
+      <td><%= quote.language %></td>
+      <td><%= quote.title %></td>
+      <td><%= quote.quote %></td>
+      <td><%= quote.info %></td>
+      <td><%= quote.publish_at %></td>
+    	<td>
+	<%= link_to 'Show', quote, :class => 'action show2' %>
+	<%= link_to 'Edit', edit_quote_path(quote), :class => 'action edit' %>
+	<%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'action delete' %>
+	</td>
+
+  </tr>
+<% end %>
+</table>
+</div>
+<%= will_paginate @quote %>
+
+

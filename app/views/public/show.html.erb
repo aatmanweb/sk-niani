@@ -1,0 +1,481 @@
+  
+ <%= javascript_include_tag "/assets/simply_js/tabs/addclasskillclass" %>
+ <%= javascript_include_tag "/assets/simply_js/tabs/attachevent" %>
+ <%= javascript_include_tag "/assets/simply_js/tabs/tabtastic" %>
+  <%= render(:partial => 'layouts/aside') %>
+<% if @keyword.nil? %>
+<% else %>
+      <% @keyword.each do |key| %>
+         <% @meta_keywords += key.keyword+", " %>
+      <% end %>
+<% end %>
+
+<% @titles.each do |t| %>
+	<% @meta_description += t.popular_name+", "	%>						
+<% end %> 
+	
+<div class="main-wrapper-inner">
+
+	<% @subnav.images.each do |subjectimages| %>
+		<% if @subnav.name == "Inventions" %>
+	<div class="inventions-banner" style=" background:url(/assets/flash-bg-images/inventions.jpg) left no-repeat #ccc;">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"	/>
+		</div>
+		<% elsif @subnav.name == "Great Stories" %>
+	<div class="great-stories-banner" style=" background:url(/assets/flash-bg-images/great-stories.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"			/>
+		</div>
+		<% elsif @subnav.name == "Philosophy" %>
+	<div class="philosophy-banner" style=" background:url(/assets/flash-bg-images/philosophy.jpg) left no-repeat;">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"		/>
+		</div>
+		<% elsif @subnav.name == "Psychology" %>
+	<div class="psychology-banner" style=" background:url(/assets/flash-bg-images/psychology.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"		/>
+		</div>
+		<% elsif @subnav.name == "Science" %>
+	<div class="science-banner" style=" background:url(/assets/flash-bg-images/science.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275"	 wmode="opaque"	/>
+		</div>
+		<% elsif @subnav.name == "Events" %>
+	<div class="events-banner" style=" background:url(/assets/flash-bg-images/events.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"		/>
+		</div>
+			<% elsif @subnav.name == "G Knowledge" %>
+	<div class="great-speeches-banner" style=" background:url(/assets/flash-bg-images/gk.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"		/>
+		</div>
+		<% elsif @subnav.name == "Great Speeches" %>
+	<div class="great-speeches-banner" style=" background:url(/assets/flash-bg-images/great-speeches.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"		/>
+		</div>
+		<% else %>
+	<div class="great-speeches-banner" style=" background:url(/assets/flash-bg-images/biographies.jpg);">
+		<embed src="<%= asset_path(subjectimages.image_url) %>"  width="100%" height="275" wmode="opaque"	/>
+		</div>
+		<% end%>
+	<% end%>
+
+
+<div class="biography-wrapper">
+						<section class="tabs">
+
+						<ul class="tabset_tabs" style="margin-top:-40px;" >
+								<li class="firstchild"><a href="#about" class="active">About <%= @subnav.name %></a></li>
+                        <li><a href="#updates" class="preActive">Updates</a></li>
+                        <li><a href="#az" class="preActive">A - Z</a></li>
+						</ul>
+                        <div style="clear:both;"></div>
+<!-- <p style="text-align:right; margin-right:25px;">
+     <embed src="<%#= asset_path('/uploads/script/general/advertise.swf') %>"  width="320" height="50" wmode="transparent"	/>
+</p> -->
+	
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @advertise.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %> <br/>
+             <% if(adv_position == "Top") %>
+		<% if(t.adv_type == "image") %>
+	       	   <p style="text-align: center;"> <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%> </p>
+		<% else %>
+		  <!-- <embed src="<%= asset_path(adv_path) %>"  width="330" height="55" wmode="transparent" />  -->
+
+		   <div style="text-align: right; margin-right: 25px; width:320px; height:50px; float:right; background:url(<%= asset_path(t.flashimage) %>) no-repeat;">
+			<div style="clear:both;"></div>
+			<embed src="<%= asset_path(adv_path) %>"  width="320" height="50" wmode="transparent" />
+			<div style="clear:both;"></div>
+		   </div>
+		<% end %>  
+	   
+            <% end %>             
+        <% end %>
+<!--------- advertisement code ends -------------------------------------------------------------------------------------------->
+	
+         <div style="clear:both;"></div>
+                 	 <div id="about" class="tabset_content tabset_content_active">
+
+                         	 <span class="bio-head2" style="margin-top:20px; line-height:28px"><br><%= @subnav.name %></span>
+                         	 <span class="bio-text" style="margin-top:-23px;"><p><%= @subnav.content.html_safe%></p></span>
+                			<span style="clear:both;"></span>
+
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @advertise.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Bottom") %>
+	      
+		<% if(t.adv_type == "image") %>
+	       	 <p style="text-align: center;">   <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%></p>
+		<% else %>
+		<!-- <embed src="<%= asset_path(adv_path) %>"  width="330" height="55" wmode="transparent" />  -->
+		   <div style="text-align: right; margin-right: 25px; width:320px; height:50px; float:right; background:url(<%= asset_path(t.flashimage) %>) no-repeat;">
+			<div style="clear:both;"></div>
+			<embed src="<%= asset_path(adv_path) %>"  width="320" height="50" wmode="transparent" />
+			<div style="clear:both;"></div>
+		   </div>
+		  	
+		<% end %>
+            <% end %>             
+        <% end %>
+<!--------- advertisement code end -------------------------------------------------------------------------------------------->
+                
+                
+		            	<%= image_tag("simply_images/most-viewed.png", :width => '660', :height => '22')%>
+        
+                                    <span id="gallery">
+                                      <% @relpages.visible.sorted.each do |relpage| %>
+				
+							
+							<% if(relpage.updateimg_url) %>
+								<% if((@subnav.name == 'Events')||(@subnav.name == 'Inventions')) %>
+									<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'events', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'G Knowledge') %>
+									<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gkpages', :id => relpage.id},{:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'Great Speeches') %>
+									<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gspeeches', :id => relpage.id},  {:style=> 'margin-right:7px;'}%>	
+								<% else %>
+									<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => relpage.id},{:style=> 'margin-right:7px;'} %>
+								<% end %>
+							<% end %>
+							
+					<% end %>
+                                    </span>
+                                                  	
+                   	</div>
+                   	
+                   	<div id="updates" class="tabset_content">
+                   	
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            	<tr><td height="30">&nbsp;</td></tr>
+                            	<tr>
+                            	  <td valign="top" align="left" height="28"><%= image_tag("simply_images/latest.png", :width => '660', :height => '22', :style => 'margin-top:30px;')%></td>
+                                </tr>
+				 <tr>
+                                <td>
+                                <span style="clear:both;"></span>
+                                <span style="width:100%;">
+                                    <span id="gallery"> 		
+					<% @relpages.visible.sorted.each do |relpage| %>
+					
+					
+							<% if(relpage.updateimg_url) %>
+								<% if((@subnav.name == 'Events')||(@subnav.name == 'Inventions')) %>
+						<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'events', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+							<% elsif(@subnav.name == 'G Knowledge') %>
+							<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url , :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gkpages', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+							<% elsif(@subnav.name == 'Great Speeches') %>
+							<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gspeeches', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>	
+							<% else %>
+						<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+							<%end%>
+							<%end%>
+							
+					<% end %>                                       
+                                    </span>
+                                </span>
+
+                                </td>
+                                </tr>
+				<tr><td height="40">&nbsp;</td></tr>
+                                <tr>
+                            	  <td valign="top" align="left" height="28"><%= image_tag("simply_images/most-commented.png", :width => '660', :height => '22')%></td>
+                                </tr>
+                                <tr>
+                                <td>
+                                <span style="clear:both;"></span>
+                                <span style="width:100%;">
+                                    <span id="gallery">
+                                     <% @posts.each do |post| %>
+					
+						
+							<% if(post.updateimg_url) %>
+								<% if((@subnav.name == 'Events')||(@subnav.name == 'Inventions')) %>
+								<%= link_to ('<span class ="title">'+post.name+'</span>' + image_tag(post.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'events', :id => post.id}, {:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'G Knowledge')  %>
+								<%= link_to ('<span class ="title">'+post.name+'</span>' + image_tag(post.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gkpages', :id => post.id}, {:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'Great Speeches')  %>
+								<%= link_to ('<span class ="title">'+post.name+'</span>' + image_tag(post.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gspeeches', :id => post.id}, {:style=> 'margin-right:7px;'} %>	
+								<% else %>
+								<%= link_to ('<span class ="title">'+post.name+'</span>' + image_tag(post.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => post.id}, {:style=> 'margin-right:7px;'} %>
+							<%end%>
+							<%end%>
+							
+					<% end %>
+                                    </span>
+                                </span>
+				</td>
+                                </tr>
+ 				<tr><td height="40">&nbsp;</td></tr>
+                                <tr>
+                            	  <td valign="top" align="left" height="28"><%= image_tag("simply_images/most-viewed.png", :width => '660', :height => '22')%></td>
+                                </tr>
+                                <tr>
+                                <td>
+                                <span style="clear:both;"></span>
+                                <span style="width:100%;">
+                                    <span id="gallery">
+                                      <% @relpages.visible.sorted.each do |relpage| %>
+					
+					
+							<% if(relpage.updateimg_url) %>
+								<% if((@subnav.name == 'Events')||(@subnav.name == 'Inventions')) %>
+								<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'events', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'G Knowledge') %>
+								<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gkpages', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+								<% elsif(@subnav.name == 'Great Speeches') %>
+								<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'gspeeches', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+								<% else %>
+								<%= link_to ('<span class ="title">'+relpage.name+'</span>' + image_tag(relpage.updateimg_url, :width => '205', :height => '113', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => relpage.id}, {:style=> 'margin-right:7px;'} %>
+							
+							<%end%>
+							<%end%>
+							
+					<% end %>
+                                    </span>
+                                </span>
+                                </td>
+                                </tr>
+				</table>
+			</div>
+ <% if @subnav.name == 'Biographies' || @subnav.name == 'Great Speeches' || @subnav.name == 'Science' || @subnav.name == 'Psychology'%>                  	
+<script type="text/javascript">
+function showSelected(sortby)
+	{
+	
+	if(sortby=='fname')
+		{
+		document.getElementById('popularList').style.visibility = "hidden";
+		document.getElementById('lnameList').style.visibility = "hidden";
+		document.getElementById('fnameList').style.visibility = "visible";
+		}
+	if(sortby=='lname')
+		{
+		document.getElementById('popularList').style.visibility = "hidden";
+		document.getElementById('lnameList').style.visibility = "visible";
+		document.getElementById('fnameList').style.visibility = "hidden";
+		}
+	if(sortby=='popular')
+		{
+		document.getElementById('popularList').style.visibility = "visible";
+		document.getElementById('lnameList').style.visibility = "hidden";
+		document.getElementById('fnameList').style.visibility = "hidden";
+		}
+	}
+</script>
+<div style="clear:both;"></div>
+<div id="az" class="tabset_content">
+<select name='test' onChange="showSelected(this.value);">
+	<option value='popular'>Popular</option>
+	<option value='fname'>First Name</option>
+	<option value='lname'>Last Name</option>
+</select>
+	<br><br>	
+<!-- POPULAR LIST STARTS HERE____________________________________________________________________________________________ -->
+	<span id="popularList" style="z-index:1; position:absolute; float:left: position:relative;">
+	<% cur_letter = '#' %>
+	<% @var= @titles1.count/2 %>
+	<% @i = 0 %>
+  	<ul style="width:320px; float:left; position:relative;">
+		<% @des = 0 %>
+		<% @titles1.each do |t| %>
+			<% if (@des == 0 && @i>=@var) %>
+				<% @des =1 %>
+	</ul>
+				<ul style="width:320px; float:left; position:relative;">
+			<% end %>
+			<% if(t.popular_name) %>		
+	  			<% title_letter = t.popular_name[0].capitalize.match(/[A-Z]/) ? t.popular_name[0].capitalize : "#" %>
+  				<% if title_letter != cur_letter %>
+					
+					<% cur_letter = title_letter %>						
+		    			<li style="background:url(/assets/simply_images/listing-line.png) repeat-x center; width:220px;"><p style="width: 20px; height: 17px; background: #ed1b24; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; text-align:center; color:#fff; font-weight:bold; font-size:10px; font-family:Arial, Helvetica, sans-serif; padding-bottom:3px;"><%= cur_letter %></p></li>
+		  		<% end %>		
+					
+					<% if @subnav.name == 'Great Speeches' %>
+						<li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+						<span style="float: left;"><%= link_to(image_tag(t.atozimg_url), {:action => 'gspeeches', :id => t.id})%></span>
+						<span style="float: left; margin-top: 15px; margin-left: 10px;">
+						<%= link_to(t.popular_name, {:action => 'gspeeches', :id => t.id}) %></span></p></li>
+
+					<% else %>
+						<li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+						<span style="float: left;"><%=link_to(image_tag(t.atozimg_url), {:action => 'showpages', :id => t.id})%></span>
+						<span style="float: left; margin-top: 15px; margin-left: 10px;">
+						<%= link_to(t.popular_name, {:action => 'showpages', :id => t.id}) %><br />
+						<span style="font-size:12px;"><%= t.sub_subject.name %></span></span>
+						<div style="clear: both;"></div></p>
+						</li>	
+					<% end %>
+			
+			<% end %>
+
+			
+<% @i=@i+1 %>
+		<% end %>
+	</ul>		<div style="clear:both; height:100px;"></div>	
+</span>
+<!-- FIRST NAME LIST STARTS HERE__________________________________________________________________________________ -->
+	<span id="fnameList" style="visibility:hidden; z-index:2; position:absolute;">
+		<% cur_letter = '#' %>
+		<% @var = @titles.count/2 %>
+		<% @i = 0 %>
+		<ul style="width:320px; float:left; position:relative;">
+			<% @des = 0 %>
+			<% @titles.each do |t| %>
+				<% if (@des == 0 && @i>=@var) %>
+					<% @des =1 %>
+					</ul>
+					<ul style="width:320px; float:left; position:relative;">
+				<% end %>				
+  				<% title_letter = t.name[0].capitalize.match(/[A-Z]/) ? t.name[0].capitalize : "#" %> 
+  				<% if title_letter != cur_letter %>
+						
+				<% cur_letter = title_letter %>						
+		    		<li style="background:url(/assets/simply_images/listing-line.png) repeat-x center; width:220px;"><p style="width: 20px; height: 17px; background: #ed1b24; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; text-align:center; color:#fff; font-weight:bold; font-size:10px; font-family:Arial, Helvetica, sans-serif; padding-bottom:3px;"><%= cur_letter %></p></li>
+		  		<% end %>
+  				<% if @subnav.name == 'Great Speeches' %>
+  					<li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+					<span style="float: left;"><%= link_to(image_tag(t.atozimg_url), {:action => 'gspeeches', :id => t.id})%></span>
+  					<span style="float: left; margin-top: 25px; margin-left: 10px;">
+					<%= link_to(t.name, {:action => 'gspeeches', :id => t.id}) %></span></p></li>
+
+  				<% else %>
+				        <li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+					<span style="float: left;"><%= link_to(image_tag(t.atozimg_url), {:action => 'showpages', :id => t.id})%></span>
+  					<span style="float: left; margin-top: 15px; margin-left: 10px;"><%= link_to(t.name, {:action => 'showpages', :id => t.id}) %><br /><span style="font-size:12px;"><%= t.sub_subject.name %></span></span></p></li>
+				<% end %> 
+
+					
+
+<% @i=@i+1 %>
+				<% end %>
+			
+			</ul>		<div style="clear:both; height:100px;"></div>	
+</span>
+				
+<!-- LAST NAME LIST STARTS HERE_________________________________________________________________________________ -->
+<span id="lnameList" style="visibility:hidden; z-index:3; position:absolute;">
+	<% @i=0 %>			
+	<% cur_letter = '#' %>
+	<% @titlename1= "Abc" %>
+	<% imagename= Array.new %>
+	<% hashvar = Hash.new { |hash, key| hash[key] = Array.new }%>
+	<% @k=0 %>
+	<% @titles.each do |title| %>
+		<% @titles1 = title.name.split(' ') %>
+		<% @k = @titles1.count %>
+		<% @titlename ="" %>
+		<% if(title.sub_subject_id)%>
+			<% imagename.push(title.sub_subject.name) %>
+		<% end %>
+		<% imagename.push(title.id) %>
+		<% imagename.push(title.atozimg_url.to_s) %>
+		<% hashvar = {"img" => @imagename }%>
+		<% while @k >= 0  do %>						
+			<% @titlename += @titles1[@k].to_s + ' '  %>						   
+	    		<% @k = @k -1 %>							
+		<%end %>
+		<% imagename.push(@titlename) %>
+		<% @titlename1 = @titlename1+ ','+ @titlename %>					
+	<% end %>
+	<% @titlename1 = @titlename1.split(",") %>
+	<% @titlename1 = @titlename1.sort_by { |x| x.downcase } %>
+	<% @var= @titlename1.count/2 %>
+	<ul style="width:320px; float:left; position:relative;">
+		<% @des =0 %>
+	        <% @j = 0 %>
+		<% while @j < @titlename1.count-1 do %>
+			<% if (@des == 0 && @i>=@var) %>
+				<% @des =1 %>
+				</ul>
+				<ul style="width:320px; float:left; position:relative;">
+			<% end %>
+			
+				<% title_letter = @titlename1[@j][1].capitalize.match(/[A-Z]/) ? @titlename1[@j][1].capitalize : "#" %> 
+				<% if title_letter != cur_letter %>
+					
+			 		<% cur_letter = title_letter %>
+					<li style="background:url(/assets/simply_images/listing-line.png) repeat-x center; width:220px;"><p style="width: 20px; height: 17px; background: #ed1b24; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; text-align:center; color:#fff; font-weight:bold; font-size:10px; font-family:Arial, Helvetica, sans-serif; padding-bottom:3px;"><%= cur_letter %></p></li>
+				<% end %>
+				<% @titimgindex=imagename.index(@titlename1[@j])%>
+				<% @titimg = @titimgindex.to_i-1 %>
+				<% @titid = @titimgindex.to_i-2 %>
+				<% @titdesc = @titimgindex.to_i-3 %>  
+				<% @titleid=imagename[@titid]%>
+				<li style="height:65px;"><p class = "aTozDataList" style="margin-left: 12px;">
+				<span style="float: left;"><%= link_to(image_tag(imagename[@titimg]), {:action => 'showpages', :id => @titleid})%></span>
+				<span style="float: left; margin-top: 15px; margin-left: 10px;"><%= link_to(@titlename1[@j], {:action => 'showpages', :id => @titleid}) %><br /><span style="font-size:12px;"><%= imagename[@titdesc] %></span> </span>
+				</p>
+				</li>
+				<% @j = @j +1 %>
+				<% @i = @i +1 %>
+	<%end %>
+	</ul>	<div style="clear:both; height:100px;"></div>	
+</span>
+			 <div style="clear:both;"></div>
+			
+
+                   </div>		
+                   <% else %>
+                   <div id="az" class="tabset_content">
+                   <span id="popularList" style="z-index:1; position:absolute; float:left: position:relative;">
+	<% cur_letter = '#' %>
+	<% @var= @titles1.count/2 %>
+	<% @i = 0 %>
+  	<ul style="width:320px; float:left; position:relative;">
+		<% @des = 0 %>
+		<% @titles1.each do |t| %>
+			<% if (@des == 0 && @i>@var) %>
+				<% @des =1 %>
+	</ul>
+				<ul style="width:320px; float:left; position:relative;">
+			<% end %>
+			<% if(t.popular_name) %>		
+	  			<% title_letter = t.popular_name[0].capitalize.match(/[A-Z]/) ? t.popular_name[0].capitalize : "#" %>
+  				<% if title_letter != cur_letter %>
+					<% cur_letter = title_letter %>		
+<li style="background:url(/assets/simply_images/listing-line.png) repeat-x center; width:220px;"><p style="width: 20px; height: 17px; background: #ed1b24; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; text-align:center; color:#fff; font-weight:bold; font-size:10px; font-family:Arial, Helvetica, sans-serif; padding-bottom:3px;"><%= cur_letter %></p></li>					
+		    		<% end %>
+	
+					<% if ((@subnav.name == 'Events') || (@subnav.name == 'Inventions')) %>
+						<li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+						<span style="float: left;"><%= link_to(image_tag(t.atozimg_url), {:action => 'events', :id => t.id})%></span>
+						<span style="float: left; margin-top: 15px; margin-left: 10px;">
+						<%= link_to(t.popular_name, {:action => 'events', :id => t.id}) %></span></p></li>
+
+					<% else @subnav.name == 'G Knowledge' %>
+						<li style="height:70px;"><p class = "aTozDataList" style="margin-left: 12px; margin-top:10px;">
+						<span style="float: left;"><%= link_to(image_tag(t.atozimg_url), {:action => 'gkpages', :id => t.id})%></span>
+						<span style="float: left; margin-top: 15px; margin-left: 10px;">
+						<%= link_to(t.popular_name, {:action => 'gkpages', :id => t.id}) %></span></p></li>
+
+					<% end %>
+			
+			<% end %>
+
+			
+<% @i=@i+1 %>
+		<% end %>
+	</ul>		<div style="clear:both; height:100px;"></div>	
+</span>
+</div>
+                   <% end %>
+						
+                        <div style="clear:both;"></div>
+</section>
+</div>
+
+	
+
+ <div class="subsubject-side-link">
+<ul class="categories-nav">
+<% @subsubjectnav.visible.sorted.each do |subsubjectnav| %>
+<% @meta_description += subsubjectnav.name+", " %>
+    <li style="border-top:1px dotted #999;"><%= link_to(subsubjectnav.name, {:action => 'showsubsubject', :id => subsubjectnav.id})%></li>
+<% end %>
+</ul>
+</div>
+
+</div>
+
+

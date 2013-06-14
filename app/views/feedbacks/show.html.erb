@@ -1,0 +1,38 @@
+<div style="width:100%; height:auto; position:relative; background:#ccc;">
+<%= link_to("Back to List", {:action => 'index', :controller => 'feedbacks'}, :class => 'back-to-menu') %>
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+<div class="top-linebar">Feedbacks</div>
+<div style="clear:both;"></div>
+</div>
+
+<div style="height:60px;">
+
+
+
+</div>
+<p id="notice"><%= notice %></p>
+<div style="clear:both;"></div>
+
+<div class="page list">
+<table class="listing" summary="Page list">
+    <tr class="header-top">
+      <th>Name</th>
+      <th>Email id</th>
+      <th>Feedback</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+<tr class="<%= cycle('odd', 'even') %>">
+      <td><%= @feedback.name %></td>
+      <td><%= @feedback.emailid %></td>
+      <td class="center"><%= (@feedback.feedback).html_safe %></td>
+      <td class="center"><%= status_tag(@feedback.visible) %></td>
+      <td class="actions">
+	<%= link_to('Edit', edit_feedback_path(@feedback),  :class => 'action edit')%>
+	<%= link_to('Delete', {:action => 'delete' ,:id => @feedback.id}, :class => 'action delete')%>
+
+      </td>
+    </tr>
+  
+</table>
+</div>

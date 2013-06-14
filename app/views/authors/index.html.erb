@@ -1,0 +1,46 @@
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Listing authors</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="height:60px;">
+<%= link_to('New Author', new_author_path, :class => 'add-new-subject') %>
+
+</div>
+<div style="clear:both;"></div>
+
+<%= form_tag authors_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+
+<div class="subject list">
+<table class="listing" summary="Subject list">
+  <tr class="header-top">
+    <th width="80%">Author Name</th>
+    <th width="20%" class="center">Actions</th>
+     </tr>
+
+<% @authors.each do |author| %>
+  <tr class="<%= cycle('odd', 'even') %>">
+   <td>
+	<%= author.author_name %>
+	</td>
+	<td><%= link_to("Add Image", {:controller => 'quoteimages', :action => 'new', :quoteimageable_id => author.id, :quoteimageable_type => 'Author'}, :class => 'action show') %>
+<%= link_to 'Show', author, { :class => 'action show2'} %>
+<%= link_to 'Edit', edit_author_path(author), :class => 'action edit' %>
+<%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'action delete' %></td>
+  </tr>
+<% end %>
+</table>
+<br/><br/>
+<%= will_paginate @quote %>
+</div>
+

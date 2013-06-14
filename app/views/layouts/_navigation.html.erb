@@ -1,0 +1,93 @@
+<% subjects ||= [] %>
+
+<div class="subnav-item l-cell l-w4 list-format"
+            data-nav-tracking="men">
+            
+   <div class="subnav-itemheader">
+
+<% subjects.each do |subject| %>
+
+ 	<% if(subject.position <= 4) %>
+		<% if(subject.name == "Quotations") %>
+		<ul>
+  			<li>
+  			<%= link_to(subject.name, {:action => 'quotations', :id => subject.id})%>
+     			</li>
+ 		</ul>
+		<% else %>
+		<ul>
+  			<li>
+  				   <%= link_to(subject.name, {:action => 'show', :id => subject.id}) %>
+     			</li>
+ 		</ul>
+		<% end %>
+  	<% end %>
+
+<% end %>
+ 	</div>
+ </div>
+
+<div class="subnav-item l-cell l-w4 list-format"
+            data-nav-tracking="women">
+            
+   <div class="subnav-itemheader">
+
+<% subjects.each do |subject| %>
+
+ 	<% if(subject.position > 4 && subject.position<=8) %>
+		<ul>
+  			<li>
+			 <%= link_to(subject.name, {:action => 'show', :id => subject.id})%>
+     		</li>
+ 		</ul>
+  	<% end %>
+
+<% end %>
+ 	</div>
+ </div>
+ 
+ <div class="subnav-item l-cell l-w4 list-format"
+            data-nav-tracking="kids">
+            
+   <div class="subnav-itemheader">
+
+<% subjects.each do |subject| %>
+
+ 	<% if(subject.position > 8 && subject.position<=11) %>
+		<ul>
+  			<li>
+			<%= link_to(subject.name, {:action => 'show', :id => subject.id})%>
+     		</li>
+ 		</ul>
+  	<% end %>
+
+<% end %>
+ 	</div>
+ </div>
+
+<div class="subnav-item l-cell l-w4 list-format l-verticallycentered">
+            
+            
+           	<div id="LatestUpdate_Home" style="float:left; width:250px; height:90px; margin-bottom:27px;">
+			<h4>Latest Update</h4>
+			<div id="gallery" style="margin-top:5px;">
+			<% if @pages.subject.name == 'Events' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '180', :height => '90', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'G Knowledge' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '180', :height => '90', :class => 'grayscale')).html_safe, {:action => 'gkpages', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'Inventions' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '180', :height => '90', :class => 'grayscale')).html_safe, {:action => 'events', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'Great Speeches' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '180', :height => '90', :class => 'grayscale')).html_safe, {:action => 'gspeeches', :id => @pages.id} %>
+				<% else %>
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '180', :height => '90', :class => 'grayscale')).html_safe, {:action => 'showpages', :id => @pages.id} %>
+			<% end %>
+			</div>
+            </div>
+            
+         
+
+</div>
+
+
+ 

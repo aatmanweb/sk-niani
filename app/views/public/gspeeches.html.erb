@@ -1,0 +1,65 @@
+
+<%= render(:partial => 'layouts/slidenav', :locals => {:subjects => @subjects}) %>
+<div style="width:100%; height:100%; position:fixed;">
+  <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%">
+    <param name="movie" value="/assets/simply_images/gspeeches/swf/text.swf">
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <param name="swfversion" value="11.0.0.0">
+    <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+    <param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+    <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+    <!--[if !IE]>-->
+    <object type="application/x-shockwave-flash" data="/assets/simply_images/gspeeches/swf/text.swf" width="100%" height="100%">
+    <!--<![endif]-->
+    <param name="quality" value="high">
+    <param name="wmode" value="transparent">
+    <param name="swfversion" value="11.0.0.0">
+    <param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+    <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+    <div>
+    <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+    <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+  </div>
+    <!--[if !IE]>-->
+  </object>
+    <!--<![endif]-->
+  </object>
+</div>
+<div style="bottom:0; width:510px; height:593px; position:fixed;">
+  <object id="FlashID2" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="510" height="593">
+  <param name="movie" value="/assets/simply_images/gspeeches/swf/microphone.swf">
+  <param name="quality" value="high">
+  <param name="wmode" value="transparent">
+  <param name="swfversion" value="6.0.65.0">
+  <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+  <param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+  <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+  <!--[if !IE]>-->
+  <object type="application/x-shockwave-flash" data="/assets/simply_images/gspeeches/swf/microphone.swf" width="510" height="593">
+  <!--<![endif]-->
+  <param name="quality" value="high">
+  <param name="wmode" value="transparent">
+  <param name="swfversion" value="6.0.65.0">
+  <param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+  <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+  <div>
+  <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+  <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+</div>
+  <!--[if !IE]>-->
+</object>
+  <!--<![endif]-->
+</object>
+</div>
+
+<body style="background:url(/assets/simply_images/gspeeches/great-speeches-bg.jpg) left top repeat-x #000 fixed;">
+<div style="width:740px; margin-top:50px; height:auto; float:left; background:rgba(255,255,255,0.8); margin-left:430px; border-radius:10px; z-index:2; position:absolute; padding:30px;">
+<img src="<%= @pageid.headimg_url %>"/>
+<% @pageid.sections.each do |sec| %>
+<div style="text-align:justify; font-family:kalinga, Arial, Helvetica, sans-serif; font-size:16px; line-height:25px; margin-top:30px; margin-bottom:100px;">
+<%= sec.content.html_safe %>
+</div>
+<% end %>
+</div>
+

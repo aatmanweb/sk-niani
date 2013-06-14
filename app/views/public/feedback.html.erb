@@ -1,0 +1,83 @@
+ <%= render(:partial => 'layouts/aside') %>
+<div class="main-wrapper-inner">
+<div  class="great-speeches-banner" style=" background:url(/assets/aboutus-banner-bg.jpg) left bottom no-repeat;">
+<object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="275">
+				<param name="movie" value="/assets/aboutus-banner.swf">
+				<param name="quality" value="high">
+				<param name="wmode" value="opaque">
+				<param name="wmode" value="transparent">
+				<param name="swfversion" value="8.0.35.0">
+				<!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+				<param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+				<!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+				<!--[if !IE]>-->
+				<object type="application/x-shockwave-flash" data="/assets/aboutus-banner.swf" width="100%" height="275">
+					  <!--<![endif]-->
+					  <param name="quality" value="high">
+					  <param name="wmode" value="opaque">
+					  <param name="wmode" value="transparent">
+					  <param name="swfversion" value="8.0.35.0">
+					  <param name="expressinstall" value="/uploads/script/general/expressInstall.swf">
+					  <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+					  <div>
+						    <h4>Content on this page requires a newer version of Adobe Flash Player.</h4>
+						    <p><a href="http://www.adobe.com/go/getflashplayer"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+					</div>
+					  <!--[if !IE]>-->
+				</object>
+			<!--<![endif]-->
+			</object>       
+</div>
+</div>
+<div id="Wrapper-about">
+    <div id="contetWrap-about">
+        <div id="about-us">                   
+            <div id="about-entry">
+                 <div style="width: 1000px; height: auto; float: left;">
+			<p>
+			   <h2 class="comments-header">
+				<%= @feedbacks.count %> Feedbacks 
+			   </h2>
+			   <% @feedbacks.each do |feedback| %>
+				<div class="even" style="width:852px; height:auto; border:#eaeaea 1px solid; padding:8px; margin-left:30px; margin-top:10px; background:#fafafa;">
+					<div style="width:100%; background:#d8d9d9; height:auto; padding:7px 0;">
+						<span class="comment-author" style="width:auto; font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:18px; color:#989898; font-weight:bold; margin-left:30px; float:left;">
+							<%= feedback.name %>
+						</span>&nbsp;
+						<span class="comment-date" style="width:auto; font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:10px; color:#333; margin-right:15px; float:right; text-transform:uppercase;">
+							<%= feedback.created_at.strftime("%B %d, %Y") %>
+						</span>&nbsp;
+					</div>
+					<div class="comment-text" style="width:800px; height:auto; position:relative; margin:10px auto;">
+						<p>
+						<%= (feedback.feedback).html_safe %>
+						</p>
+					</div>
+				</div>
+			<% end %>
+<br>
+
+			<h2 class="comments-header" >
+				Leave Your Feedback Here:
+			</h2>
+			<p>
+			Your email address will not be published. Required fields are marked.
+			</p><br>
+
+  			<%= form_for(:feedback, :url => {:controller => 'feedbacks', :action => 'create'}) do |f| %>
+  
+  				<%= render(:partial => 'feedbacks/new_form', :locals => {:f => f} ) %>
+
+  			<div style="z-index:2px; postion:relative; margin-top:120px;"> 
+  	  			<%= submit_tag('Post Feedback', :class=>"comment-button-label") %>
+    			</div>
+ 		 	<% end %>		
+	<br/><br/>
+			</p>
+		</div>
+	</div>
+</div>
+	</div>
+	<div style="clear:both;"></div>
+	</div>
+

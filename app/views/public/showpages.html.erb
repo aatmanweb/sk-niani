@@ -1,0 +1,240 @@
+<%= stylesheet_link_tag   "/assets/simply_css/script_section", "/assets/simply_css/biographies-script-style", "/assets/simply_css/showpages", "/assets/simply_css/jquery.mCustomScrollbar" %>
+<%= stylesheet_link_tag   "/assets/simply_css/side-nav-mx-height", :media=>"screen and (min-height: 850px)"  %>
+<%= stylesheet_link_tag   "/assets/simply_css/side-nav", :media=>"screen and (max-height: 849px)"  %>
+ <%= javascript_include_tag "/assets/simply_js/scroll/jquery.mousewheel.min.js" %>
+ <%= javascript_include_tag "/assets/simply_js/scroll/jquery.mCustomScrollbar.js" %>
+ <%= javascript_include_tag "/assets/simply_js/backup/font_size.js" %>	
+<style id="jsbin-css">
+
+</style>
+<script>
+		(function($){
+			$(window).load(function(){
+				$("#navigation").mCustomScrollbar({
+					set_width:false, /*optional element width: boolean, pixels, percentage*/
+					set_height:false, /*optional element height: boolean, pixels, percentage*/
+					horizontalScroll:false, /*scroll horizontally: boolean*/
+					scrollInertia:550, /*scrolling inertia: integer (milliseconds)*/
+					scrollEasing:"easeOutCirc", /*scrolling easing: string*/
+					mouseWheel:"pixels", /*mousewheel support and velocity: boolean, "auto", integer, "pixels"*/
+					mouseWheelPixels:60, /*mousewheel pixels amount: integer*/
+					autoDraggerLength:true, /*auto-adjust scrollbar dragger length: boolean*/
+					scrollButtons:{ /*scroll buttons*/
+						enable:false, /*scroll buttons support: boolean*/
+						scrollType:"continuous", /*scroll buttons scrolling type: "continuous", "pixels"*/
+						scrollSpeed:20, /*scroll buttons continuous scrolling speed: integer*/
+						scrollAmount:40 /*scroll buttons pixels scroll amount: integer (pixels)*/
+					},
+					advanced:{
+						updateOnBrowserResize:true, /*update scrollbars on browser resize (for layouts based on percentages): boolean*/
+						updateOnContentResize:false, /*auto-update scrollbars on content resize (for dynamic content): boolean*/
+						autoExpandHorizontalScroll:false, /*auto expand width for horizontal scrolling: boolean*/
+						autoScrollOnFocus:true /*auto-scroll on focused elements: boolean*/
+					},
+					callbacks:{
+						onScrollStart:function(){}, /*user custom callback function on scroll start event*/
+						onScroll:function(){}, /*user custom callback function on scroll event*/
+						onTotalScroll:function(){}, /*user custom callback function on scroll end reached event*/
+						onTotalScrollBack:function(){}, /*user custom callback function on scroll begin reached event*/
+						onTotalScrollOffset:0, /*scroll end reached offset: integer (pixels)*/
+						whileScrolling:false, /*user custom callback function on scrolling event*/
+						whileScrollingInterval:30 /*interval for calling whileScrolling callback: integer (milliseconds)*/
+					}
+				});
+			});
+		})(jQuery);
+	</script>
+	<body style="background:url(<%= @pageid.backimg_url %>) no-repeat right top <%= @pageid.backimg_color %> fixed;">
+  <%= render(:partial => 'layouts/slidenav', :locals => {:subjects => @subjects}) %>
+
+<div id="right-side">
+<div class="side-nav-bg">
+  	<div class="main-biography-heading">
+<% if(@pageid.images) %>
+    	<% @pageid.images.each do |img| %>
+			<%= image_tag(img.image_url, :width => '180') %>
+		<%end%>
+<%end%>
+		</div>
+<ul id="navigation">
+	<% @pagesec.visible.sorted.each do |pagesec| %>
+<% @link = pagesec.name.gsub(/([_@#!%()\-=;><,' '{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/,'-') %>
+  			 <li><%= link_to(pagesec.name,"#"+@link, :class=>'topLink')%></li>
+				<% @meta_keywords +=@pageid.name+" - "+pagesec.name+", " %>
+                 	<% end %>
+  </ul>
+<% if @keyword.nil? %>
+<% else %>
+      <% @keyword.each do |key| %>
+         <% @meta_keywords += key.keyword+", " %>
+      <% end %>
+<% end %>
+</div>
+<div class="content-wrapper" style="padding-bottom:60px;">
+
+<br>
+<p style="text-align:center;">
+<% if(!@pageid.headimg_url.blank?) %>
+	<%= image_tag(@pageid.headimg_url) %>
+<% end %>
+</p> 
+  <div class="font-size-wrapper">
+  <a href="javascript:decreaseFontSize();" class="font-size-link">-</a> &nbsp;&nbsp; Text Size &nbsp;&nbsp;
+		<a href="javascript:increaseFontSize();" class="font-size-link">+</a>
+		</div>
+<% @meta_description += raw(@pageid.intro) %>
+
+		<% @pagesec.visible.sorted.each do |pagesec| %>
+<% @link = pagesec.name.gsub(/([_@#!%()\-=;><,' '{}\~\[\]\.\/\?\"\*\^\$\+\-]+)/,'-') %>	
+			<% if pagesec.position == 1 %>
+				<div id="<%= @link %>">
+                          		<p><%= raw(pagesec.content) %></p>
+			<% else %>
+				<div class="page mtop100" id="<%= @link %>">
+                    			<p><%= raw(pagesec.content) %></p>
+      		        <% end %>
+      		        <div style="clear:both;"></div>
+                    			<!--<p style="text-align:center; margin-top:20px; ">
+<embed src="<%= asset_path('/uploads/script/general/sir_ad.swf') %>"  width="600" wmode="transparent"	/>             	
+             	</p>-->
+<% pagesec.advertisements.each do |t| %>
+     <% adv_path = t.adv_url %>
+     <% adv_position = t.adv_position %>
+     <% if(adv_position == "Bottom") %>  
+      
+	<% if(t.adv_type == "image") %>     
+        <p style="text-align: center;">   <%= image_tag(adv_path, :width => '330', :height => '55')%></p>
+        <% else %>
+<br/>
+		   <div style="text-align: center; margin: 0 auto; height: 100px; width:600px;">
+			 <object type="application/x-shockwave-flash" 
+        data="<%= asset_path(adv_path) %>"  
+        width="600" height="100">
+  <param name="movie" value="<%= asset_path(adv_path) %>"  />
+  <param name="wmode" value="transparent"  />
+  <img src="<%= asset_path(t.flashimage) %>" />
+</object>
+		   </div>
+	<% end %>
+      
+     <% end %>       
+<% end %>
+
+ 			</div>
+
+
+ 			<div style="clear:both"></div>
+  			<div class="division"></div>
+		<% end %>
+		<p>Biography of <%= @page_script %> | <%= @pagecom.count %> Comments >> </p><br>
+<h2 class="comments-header"><%= @pagecom.count %> Comments </h2><br>
+
+<% @pagecom.each do |pagecom| %>
+<div class="even" style="width:852px; height:auto; border:#eaeaea 1px solid; padding:8px; margin-left:30px; margin-top:10px; background:#fafafa;">
+<div style="width:100%; background:#d8d9d9; height:auto; padding:7px 0;">
+<span class="comment-author" style="width:auto; font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:18px; color:#989898; font-weight:bold; margin-left:30px; float:left;"><%= pagecom.name %>
+</span>&nbsp;
+<span class="comment-date" style="width:auto; font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:10px; color:#333; margin-right:15px; float:right; text-transform:uppercase;"><%= pagecom.created_at.strftime("%B %d, %Y") %>
+</span>&nbsp;
+</div>
+<div class="comment-text" style="width:800px; height:auto; position:relative; margin:10px auto;">
+<p><%= (pagecom.comment).html_safe %></p>
+</div>
+</div>
+<% end %>
+<br>
+ <h2 class="comments-header" >Leave Comment</h2>
+<p>Your email address will not be published. Required fields are marked.</p><br>
+
+  <%= form_for(:comment, :url => {:controller => 'comments', :action => 'create', :page_id => @pageid.id}) do |f| %>
+  
+  	<%= render(:partial => 'comments/form', :locals => {:f => f} ) %>
+	
+  	<div >
+  	  <%= submit_tag('Post Comment',:class=>"comment-button-label") %>
+    </div>
+  <% end %>		
+	<br/><br/>
+
+<div id="script-footer">
+     	<div id="box1" class="footer-link-quotes">
+		<div style="font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; line-height:18px; font-size:18px; color:#999; width:auto; height:auto; margin-top:25px; float:left; position:relative;">
+		<strong style="color:#000;">"</strong> Best Quotes of
+		</div>
+		<div style="clear:both;"></div>
+		        	&nbsp;&nbsp;&nbsp;&nbsp;
+<% if(@authorid && @authorid.quotes.any? ) %>
+
+
+		<% @Quotationsurl= root_url+'public/quotations/' %>
+		<% @Quotationsurl= @Quotationsurl+@authorid.id.to_s+'?type=author' %>
+		<%= link_to(('<span style="font-family:century-gothic, Arial, Helvetica, sans-serif; font-size:20px; color:#333; font-weight:bold;">'+@page_script+'</span>').html_safe, url_with_protocol(@Quotationsurl)) %> 
+
+
+<% elsif(@topicid)%>
+<% @topicid.each do |topicid| %>
+<% if(topicid.quotes.any?) %>
+		<% @Quotationsurl= root_url+'public/quotations/' %>
+		<% @Quotationsurl= @Quotationsurl+topicid.id.to_s+'?type=topic' %>
+		<%= link_to(('<span style="font-family:century-gothic, Arial, Helvetica, sans-serif; font-size:20px; color:#333; font-weight:bold;">'+topicid.topic_name+'</span>').html_safe, url_with_protocol(@Quotationsurl)) %> 
+<% end %>
+<% end %>
+<% end %>
+        </div>
+	<div id="box2" class="footer-link-quotes">
+		<div style="font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:18px; letter-spacing:0px; color:#333; width:112px; height:auto; margin-top:25px; float:left; position:relative;">
+		 Other Similar<br/><strong>Biographies</strong>
+		</div>
+		 <div style="width:70px; float:left; height:auto; position:relative; margin-top:12px; ">
+		<ul>
+			<li> 
+<% if(@otherpage) %>
+<% @otherpage.each do |otherpage| %>
+<% if(!otherpage.atozimg_url.blank?) %>
+				<%= link_to(image_tag(otherpage.atozimg_url, :width=> '55', :border => 0, :style=> 'float:right; margin-top:10px;'), :action => 'showpages', :id => otherpage.id ) %>
+<% end %>
+		<% end %>
+	<% end %>
+			 </li>
+		</ul>
+
+		</div>
+        </div>
+<div id="box3" class="footer-link-quotes">
+        	<div style="font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:12px; color:#333; height:auto; float:left; position:relative;"><strong style="font-size:16px;">Biography App</strong><br>Coming Soon...</div>
+          <div style="clear:both;"></div>
+        <img src="/assets/app.png" width="182" height="65" />
+        </div>
+        <div id="box1" class="footer-link-quotes" style="border:1px #CCCCCC solid;">
+        	<div style="font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; font-size:12px; color:#333; height:auto; float:left; position:relative;"><strong style="font-size:16px;">Subscribe for Newsletter</strong></div>
+          <div style="clear:both"></div>
+            <form action="/siteusers/login#toregister" method="get" style="margin-top:5px;">
+            <input id="email" type="email" size="18" required="required" placeholder="Enter Email ID" name="email"></input>
+            </form>
+      </div>
+<div style="clear:both"></div>
+</div>	
+	
+</div>
+</div>
+<script>
+$('a[href*=#]').click(function() {
+
+ if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+ && location.hostname == this.hostname) {
+ $('ul#navigation a.active').removeClass('active');
+    
+   var $target = $(this.hash);
+   $target = $target.length && $target
+   || $('[name=' + this.hash.slice(1) +']');
+   if ($target.length) {
+  var targetOffset = $target.offset().top;
+  $('html,body')
+  .animate({scrollTop: targetOffset}, 1200);
+  $(this).addClass('active');
+    return false;
+   }
+ }
+  });
+</script>
+

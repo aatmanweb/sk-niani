@@ -1,0 +1,27 @@
+<% @page_title = "Delete Comment: #{@comment.name}" %>
+<div style="width:100%; height:auto; position:relative; background:#ccc;">
+
+<%= link_to("Back to List", {:action => 'show', :page_id => @comment.page.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Delete Comment</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+  
+  <%= form_for(:section, :url => {:action => 'destroy', :id => @comment.id, :page_id => @comment.page.id}) do |f| -%>
+
+    <p class="delete-result-text">Are you sure you want to permanently delete this section?</p>
+  
+    <p class="delete-result-text-2"><%= @comment.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag "Delete Comment", :class => 'innerpage-form-button' %>
+    </div>
+    
+  <% end %>
+</div>

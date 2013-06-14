@@ -1,0 +1,93 @@
+
+
+<% @page_title = "User Login" %>
+<style>
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+</style>
+ <section>				
+                <div id="container_demo">
+                    <!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+                    <a class="hiddenanchor" id="toregister"></a>
+                    <a class="hiddenanchor" id="tologin"></a>
+                    <div id="wrapper">
+                        <div id="login" class="animate form">
+				<div class="form-wrapper">
+				<div style="width:290px; height:400px; float:left; background:url(/assets/edison-login02.jpg) bottom no-repeat; position:relative; border-radius: 5px 0 0 5px; ">
+				</div>
+                             <%=  form_tag({:action => 'attempt_user_login'}, :class => 'form-1') do  %>
+				
+				
+                                <h1 style="text-align:center;"><a href="/"><img src="/assets/login-sk-logo.png" border="0" /></a></h1> 
+                                <p>
+				<%= label_tag "username",nil, "class" => "uname" %>
+				<%= text_field_tag "username",nil, "size" => 40 , "required" => "required", "placeholder" => "myusername or mymail@mail.com" %>									
+				</p>
+                                <p>
+				<%= label_tag "password",nil, "class" => "youpasswd" %>
+                                <%= password_field_tag "password",nil,"size" => 40 , "required" => "required", "placeholder" => "eg. X8df!90EO" %>
+                                </p>
+                                
+                                <p class="login button"> 
+                                <%= submit_tag("Login") %> 
+				</p>
+                                <p class="change_link">
+				Not a member yet ?
+				<a href="#toregister" class="to_register">Join us</a>
+				</p>
+			
+                           <% end %>
+			<div style="clear:both;"></div>
+</div>
+                        </div>
+
+                        <div id="register" class="animate form">
+			<div class="form-wrapper">
+				<div style="width:290px; height:450px; float:left; background:url(/assets/edison-login02.jpg) bottom no-repeat; position:relative; border-radius: 5px 0 0 5px; ">
+</div>
+                            <%= form_for(:siteusers, :url => {:action => 'create'}, :html =>{:class => 'form-1'}) do |f1| %>
+                                <h1 style="text-align:center;"><a href="/"><img src="/assets/register-sk-logo.png" border="0"	 /></a></h1> 
+                                <p>
+				<%= f1.hidden_field :status, :value => "inactive" %>                  		 
+                                <%= f1.label(:username, nil, :class => "uname") %>
+                                <%= f1.text_field(:username, :size => 40 , :required => "required", :placeholder => "myusername or mymail@mail.com") %>										
+				</p>
+                                <p> 
+
+                                <%= f1.label(:email, nil, :class => "youmail") %>
+                            	<% if(params[:email]) %>
+                                	<%= f1.text_field(:email, :size => 40 , :required => "required", :placeholder => "myusername or mymail@mail.com" , :value => params[:email])  %>
+				<% else %>
+ 					<%= f1.text_field(:email, :size => 40 , :required => "required", :placeholder => "myusername or mymail@mail.com") %>		
+				<% end %>					
+				</p>
+                                <p> 
+                                <%= f1.label(:password, nil, :class => "youpasswd") %>
+ 				<%= f1.password_field(:password, :size => 40 , :required => "required", :placeholder => "Minimum 6 Characters") %>
+                                </p>
+                               
+                                <p class="signin button"> 
+				<%= f1.submit "Sign up" %> 
+	  			</p>
+                                <p class="change_link">  
+				Already a member ?
+				<a href="#tologin" class="to_register"> Go and log in </a>
+				</p>
+                            <% end %>
+			<div style="clear:both;"></div>
+			</div>
+			<div style="clear:both;"></div>
+                        </div>
+						
+                    </div>
+                </div>  
+            </section>

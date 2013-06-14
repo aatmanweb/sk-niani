@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "/assets/simply_css/subjectpage" , "/assets/simply_css/slidenav-red"%>
+<%= javascript_include_tag "/assets/simply_js/backup/custom.js" %>
+<%= javascript_include_tag "/assets/simply_js/backup/jquery.cookie.js" %>
+<%#= javascript_include_tag "/assets/simply_js/backup/jquery-ui-1.8.23.custom.min.js" %>
+
+<style>
+#header2 #logo{margin-top:100px;margin-left:26px}a{color:#DC2028}a.button,button,input[type=submit],input[type=reset],input[type=button]{background-color:#DC2028}.jspDrag{background:#DC2028}#social-icons li:hover{background-color:#0b88e4}#header2{
+	background-color: #DC2028
+}.flex-direction-nav a{background-color:#0b88e4}.portfolio-hover .bg-color{background:#0b88e4}.image-overlay{background-color:#0b88e4}#portfolio-categories li a.current{color:#0b88e4}#blog-posts .blog-post.pagination-wrap{background-color:#0b88e4}.post-format-wrap.pfquote{}.blog-post a:hover{color:#0b88e4}#header2 #plus-sign .circle{background-color:#DC2028;}
+</style>
+
+<header id="header2">
+
+<div id="logo-wrap" style="margin-left:-15px;">
+<a title="Iconik" href="#">
+<img src="/assets/simply_images/logo.png" alt="Iconik" width="206" height="21" id="logo">
+</a>
+<div id="responsive-menu-button" title="Toggle Menu"></div>
+</div>
+<div id="nav-wrap">
+<ul class="sk-left-menu"><br/>
+
+<% @subjects.each do |subject| %>
+			<% if subject.name == "Quotations" %>
+				 <li><%= link_to(subject.name, {:action => 'quotations', :id => subject.id})%></li>
+			<% else %>
+				 <li><%= link_to(subject.name, {:action => 'show', :id => subject.id})%></li>
+ 			<% end %>
+			<% end %>
+          
+		    </ul>
+		   
+</div>
+<div id="plus-sign"><span class="circle"></span><span class="icon"></span></div>
+</header>

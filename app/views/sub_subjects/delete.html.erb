@@ -1,0 +1,29 @@
+<% @subsubjects_title = "Delete Sub Subject: #{@subsubjects.name}" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Delete Sub Subject</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+
+  
+  <%= form_for(:sub_subject, :url => {:action => 'destroy', :id => @subsubjects.id, :subject_id => @subject.id}) do |f| -%>
+
+    <p class="delete-result-text">Are you sure you want to permanently delete this Sub Subject?</p>
+  
+    <p class="delete-result-text-2"><%= @subsubjects.name %></p>
+  
+    <div class="form-buttons">
+      <%= submit_tag "Delete Sub Subject", :class => 'innerpage-form-button' %>
+    </div>
+    
+  <% end %>
+</div>

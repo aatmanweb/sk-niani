@@ -1,0 +1,70 @@
+<%= stylesheet_link_tag "bottom_links" %>
+    <div id="divLoading" class="banner-loader"> 
+    <%= image_tag("my_preloader1.gif", :alt => '')%>
+       
+    </div> 
+    <div class="banner" id="divFrameHolder">
+      <iframe onload="hideLoading()" src='<%=  root_url+'/assets/index.html' %>'  width="100%" scrolling="no" frameborder="0"></iframe>
+	</div>
+    <div style="clear:both"></div>
+    <div class="main-wrapper" style="margin-top:7px;" >
+    	<div class="welcome">
+        <h3>Welcome</h3>
+        <p style="margin-top:0px;" >
+    
+     The most wonderful and precious element of universe is the human life which can only be guided by the right knowledge and right attitude. So, here is an ocean of knowledge, both in <strong style="color:#dc2028;">English</strong> and <a href="http://hindi.simplyknowledge.com"><strong style="color:#dc2028;">Hindi</strong></a>  encompassing every detail and each facet of human life which ‘one must know’ in order to grow and attain the summits of success.
+A team of around 200 dedicated members is working ceaselessly to turn such a colossal dream into reality. We are confident that this portal will help bring change in people across the world.
+<br><br></p>
+        </div>
+        <div class="latest-update" style="width: 250px; height: 60px; float:right;">
+                            <h3>Latest Update</h3>
+                            <div id="gallery" style="margin-top:0px;">
+                            <% if @pages.subject.name == 'Events' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '240', :height => '120')).html_safe, {:action => 'events', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'G Knowledge' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '240', :height => '120')).html_safe, {:action => 'gkpages', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'Inventions' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '240', :height => '120')).html_safe, {:action => 'events', :id => @pages.id} %>
+				<% elsif @pages.subject.name == 'Great Speeches' %>			
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '240', :height => '120')).html_safe, {:action => 'gspeeches', :id => @pages.id} %>
+				<% else %>
+<%= link_to ('<span class ="title">'+@pages.name+'</span>' + image_tag(@pages.updateimg_url , :width => '240', :height => '120')).html_safe, {:action => 'showpages', :id => @pages.id} %>
+				<% end %>
+							
+        	
+		<div style="clear:both"></div>
+		
+									</div>
+                        </div>
+                        
+        <div class="border-bottom"></div>
+        <div style="clear:both"></div>
+      <div class="left-bottom-nav">
+         <%= render(:partial => 'layouts/botnav', :locals => {:subjects => @subjects}) %>
+           
+      </div>
+
+      <div class="latest-quote">
+ 	<% if(@quotes) %>
+      <% @quotes.each do |quote| %>
+      	<div style="width:240px; padding:5px 5px 2px 5px; background:#666; font-family:century-gothic, Arial, Helvetica, sans-serif; color:#FFF; font-weight:bold; font-size:12px; text-transform:uppercase; ">Today's Quote</div>
+      	<div style="margin-top:5px; padding:5px; width:auto; font-family:Kalinga, Arial, Helvetica, sans-serif; color:#000; font-size:13px; text-align:justify;">
+<%= quote.quote %>
+</div>   
+		<% @Quotationsurl= root_url+'public/quotations/' %>
+		<% @Quotationsurl= @Quotationsurl+quote.author_id.to_s+'?type=author' %>
+<div style="font-family:Kalinga, Arial, Helvetica, sans-serif; color:#DC2028; font-size:12px; font-weight:bold; text-align:right; width:240px;">
+<%= link_to(quote.author.author_name, url_with_protocol(@Quotationsurl), :style =>"color:#DC2028;") %></div>
+      </div>
+      <% end %>
+<% end %>
+      <div style="clear:both"></div>
+    </div>
+<% if @keyword.nil? %>
+
+<% else %>
+    <% @keyword.each do |key| %>
+       <% @meta_keywords += key.keyword+", " %>
+    <% end %>
+<% end %>
+    

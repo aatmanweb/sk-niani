@@ -1,0 +1,301 @@
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" >
+    <meta name="keywords" content="<%= @meta_keywords %>" />
+    <meta name="description" content="<%= @meta_description %>" />
+    <meta name="google-site-verification" content="4-3P0kQhQJE1swWiljhii_7YrQIaH9HRMCX8LqVbzrY" />
+    <title>simplyknowledge <%= "| #{@page_title}" if @page_title %><%= "| #{@page_script}" if @page_script %></title>
+  <%= stylesheet_link_tag   "style", "/assets/simply_css/header" %>
+  <%= stylesheet_link_tag   "style", "/assets/simply_css/jquery-ui2.css" %>
+  <%= stylesheet_link_tag   "style", "/assets/simply_css/shadowbox" %>
+  <%= javascript_include_tag "/assets/simply_js/simplyKheader.js" %>
+  <%= javascript_include_tag "/assets/simply_js/jquery-ui.js" %>
+  <%= javascript_include_tag "/assets/footer.js" %>
+ <%= javascript_include_tag "/assets/simply_js/shadowbox.js" %>
+  <style type="text/css">
+  .search-button {
+  margin-left: 5px;
+  cursor: pointer;
+    border: none;
+    font-size: 10px;
+    padding:0px 10px 0px 10px;
+    border:1px solid #ccc;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+     border-radius: 5px;
+background: #eeeeee; /* Old browsers */
+background: -moz-linear-gradient(top,  #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #eeeeee 0%,#cccccc 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #eeeeee 0%,#cccccc 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+
+
+}
+
+.search-button:hover {
+	background: #cccccc; /* Old browsers */
+background: -moz-linear-gradient(top,  #cccccc 0%, #eeeeee 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cccccc), color-stop(99%,#eeeeee)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #cccccc 0%,#eeeeee 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #cccccc 0%,#eeeeee 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #cccccc 0%,#eeeeee 99%); /* IE10+ */
+background: linear-gradient(to bottom,  #cccccc 0%,#eeeeee 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#eeeeee',GradientType=0 ); /* IE6-9 */
+
+}
+
+  </style>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+        $('p').live("cut copy paste",function(e) {
+                e.preventDefault();
+            });
+       
+// Here we are getting all images and turning off the context menu. 
+// return false is the same as calling .preventDefault() and .stopPropagation()
+        $('img').bind("contextmenu",function(e){
+           return false;
+        });
+ $('#sb-wrapper').live("contextmenu",function(e){
+           return false;
+        });
+// Here we disable default behaviors for mousedown which include the drag options.
+        $('img').bind("mousedown",function(e){
+            return false;
+        });
+$('#sb-wrapper').live("mousedown",function(e){
+            return false;
+        });
+    });
+</script>
+<script type="text/javascript">
+  Shadowbox.init({
+    handleOversize: "drag",
+    modal: true
+});
+</script>
+
+
+  </head>
+  
+  <body  onLoad="MM_preloadImages('/assets/social/facebook-hover.png','/assets/social/youtube-hover.png','/assets/social/twitter-hover.png','/assets/social/linkedIn-hover.png','/assets/social/google-hover.png','/assets/social/vimeo-hover.png')">
+
+<div data-gadget="simplyK.gadget.OnesimplyKNav" data-load="preloaded" data-search-redirect="false">
+            <nav class="gnav platform-font-1">
+            <div class="tier0 l-table l-fullwidth">
+            <div class="home facet nav-section l-cell">
+            <%= link_to image_tag("logo.png", :width => '255', :height => '27', :border => 0, :style => 'margin-top:3px;'), :action => 'index' %>
+            </div>
+            <div class="home facet nav-section l-cell">
+            <%= link_to image_tag("home.png", :width => '25', :height => '25', :border => 0, :style => 'margin-top:2px;'), :action => 'index' %>
+            </div>
+            <div class="home facet nav-section l-cell">
+          <%= link_to("About Us", :action => 'aboutus') %>
+            </div>
+            <div class="shop facet nav-section l-cell "
+            data-subnav="shop"
+            data-nav-tracking="shop">
+            <a data-track-click="true" href="#"><span class="facet-label glyph-after" data-glyph="&#109;">Subjects</span></a>
+            </div>
+            <div class="sports facet nav-section l-cell "
+            data-subnav="sports"
+            data-nav-tracking="sports">
+            <a data-track-click="true" href="#"><span class="facet-label glyph-after" data-glyph="&#109;">Platforms</span></a>
+            </div>
+            
+            
+            
+                   <div class="search1 nav-section l-cell" style="text-align:left;"  >
+						
+            		<%= form_tag({:controller => 'public', :action => 'search'}, :class => 'search-container') do %>
+            		<label for="gsearch">
+		   			<%= text_field_tag(:search_string, nil, {:class => 'gsearch', :id => 'keywords', :required => true})%>
+					<%= hidden_field_tag(:pagetype, @pagetypesearchid) %>
+					<%= hidden_field_tag(:pageactiontype, @pagetypesearchaction) %>
+		   	<span class="placeholder platform-font-2" data-full-text="Simply Search" data-short-text="SEARCH"></span>
+		   	
+		   			</label>
+						<%= submit_tag "Search", :class=> 'search-button' %>
+						<% end %>
+						
+     					</div> 
+            <div class="home facet nav-section l-cell">
+<% @address = root_url %>
+<% replacements = [ ['http://', ''], ['www.', ''] ] %>
+<% replacements.each {|replacement| @address.gsub!(replacement[0], replacement[1]) } %>
+
+            <% @hinurl = 'http://hindi.'+@address+params[:controller]+'/'+params[:action]+'/' %>
+        	  <% if params[:action] == 'showpages' %>
+                	 <% @hinurl = @hinurl+'?permalink='+(@pageid.permalink|| "") %> 
+        	  <% end %>      
+ 		  <% if params[:action] == 'showsubsubject' %>
+               		<% @hinurl = @hinurl+'?permalink='+(@subsubjectid.permalink|| "") %> 
+        	  <% end %>      
+         	  <% if params[:action] == 'show' %>
+               		<% @hinurl = @hinurl+'?permalink='+(@subnav.permalink|| "") %> 
+        	  <% end %>     
+		 <% if params[:action] == 'events' %>
+               		<% @hinurl = @hinurl+'?permalink='+(@pageid.permalink|| "") %> 
+        	 <% end %>  
+		 <% if params[:action] == 'gkpages' %>
+               		<% @hinurl = @hinurl+'?permalink='+(@pageid.permalink|| "") %> 
+        	<% end %>  
+		<% if params[:action] == 'inventions' %>
+               		<% @hinurl = @hinurl+'?permalink='+(@pageid.permalink|| "") %> 
+        	<% end %>   
+        	<% if params[:action] == 'search' %>
+			<% @hinurl = root_url+params[:controller]+'/'+params[:action]+'/'+'?search_string='+params[:search_string]%>
+        	<% end %>
+	   		<%= link_to('हिंदी', url_with_protocol(@hinurl), :style=> 'color:#dc2028; font-weight:bold;') %>
+            
+            </div>
+            
+            <div class="home facet nav-section l-cell">
+            <% if session[:siteuser_id] %>
+             <%= link_to("Logout", {:controller => 'siteusers', :action => 'logout'}) %>
+            <% else %>
+           	<%= link_to("Login", {:controller => 'siteusers', :action => 'login'}) %>
+           	<% end %>
+            </div>
+            </div>
+            <div class="tier1 l-fullwidth">
+            <div data-subnav="shop"
+            class="subnav shop tracking is-hidden"
+            data-nav-tracking="shop">
+            <div class="subnav-container">
+            <div class="subnav-section l-table">
+            <%= render(:partial => 'layouts/navigation', :locals => {:subjects => @subjects}) %>
+
+            </div>
+            </div>
+            </div>
+            <div data-subnav="sports"
+            class="subnav sports tracking is-hidden"
+            data-nav-tracking="sports">
+            <div class="subnav-container">
+            <div class="subnav-section l-table">
+            <div class="subnav-item l-cell l-w6 visual-format">
+            <a data-subnav-label="RUNNING"
+            href="#"
+            data-nav-tracking="running"
+            data-track-click="true">
+            <%= image_tag("simply_images/videos.png", :width => '100', :height => '100', :border => 0) %>
+            <div class="subnav-itemheader">VIDEO</div>
+            </a>
+            </div>
+            <div class="subnav-item l-cell l-w6 visual-format">
+            <a data-subnav-label="BASKETBALL"
+            href="#"
+            data-nav-tracking="basketball"
+            data-track-click="true">
+            <%= image_tag("simply_images/audios.png", :width => '100', :height => '100', :border => 0) %>
+            <div class="subnav-itemheader">AUDIO</div>
+            </a>
+            </div>
+            <div class="subnav-item l-cell l-w6 visual-format">
+            <a data-subnav-label="FOOTBALL"
+            href="#"
+            data-nav-tracking="football"
+            data-track-click="true">
+            <%= image_tag("simply_images/books.png", :width => '100', :height => '100', :border => 0) %>
+            <div class="subnav-itemheader">BOOKS</div>
+            </a>
+            </div>
+            <div class="subnav-item l-cell l-w6 visual-format">
+            <a data-subnav-label="SOCCER"
+            href="#"
+            data-nav-tracking="soccer"
+            data-track-click="true">
+            <%= image_tag("simply_images/posters.png", :width => '100', :height => '100', :border => 0) %>
+            <div class="subnav-itemheader">POSTERS</div>
+            </a>
+            </div>
+            
+            </div>
+            </div>
+            <div class="morenav">
+            <hr class="onesimplyK-divider"/>
+            
+            </div>
+            </div>
+            </div>
+            </nav>
+		</div>  
+
+       
+    <div class="mymain">
+           <% if browser.ie8? %>
+		<style>
+a.browser-detect:link, a.browser-detect:visited
+{ padding:2px 3px; text-decoration:none; color:#fff; font-size:11px;}
+a.browser-detect:hover
+{ padding:3px 3px; text-decoration:none; }
+</style>
+		<div style="width:550px; height:auto; margin:0 auto; position:relative; margin-top:15%; padding:20px; border-radius: 5px; border:1px solid #ccc;">
+		<span style ="margin-top:50%; font-family:verdana; background:#B02E27; font-size:16px; padding:7px 10px; color:#fff;"> Unsupported Browser! Please update it!</span>
+		<p style ="font-family:verdana;  font-size:12px; color:#000; text-align:justify;">You are using a browser that is not supported by this website. That probably means your browser is out of date.</p>
+		<div style="clear:both;"></div>
+		<div style="width:200px; height:auto; float:left; position:relative; margin-top:30px">
+<span style ="margin-top:50%; font-family:verdana; font-size:12px; color:#000; padding:7px 10px; background:#1F83B5;">Download Latest <span style ="color:#fff;">IE Browser</span></span>
+		</div>
+		<div style="width:200px; float:left; text-align:left;">
+		<a href="http://windows.microsoft.com/en-us/internet-explorer/ie-10-worldwide-languages" target="_blank"><img src="/assets/internet_explorer.png" width="80" border="0" /></a>
+		</div>
+		<div style="clear:both;"></div>
+		<p style ="font-family:verdana;  font-size:12px; color:#000; text-align:justify;">We suggest installing the latest version of <a href="http://www.mozilla.com/en-US/firefox/firefox.html" class="browser-detect" style="background:#D66E06;" target="_blank">Firefox</a> 
+<a href="http://www.google.com/chrome" class="browser-detect" style="background:#EDD900;" target="_blank">Google Chrome</a> 
+<a href="http://www.apple.com/safari/download/" class="browser-detect" style="background:#59C0E3;" target="_blank">Safari</a> or 
+<a href="http://www.opera.com/" class="browser-detect" style="background:#BD0000;" target="_blank">Opera</a>.</p>
+
+		</div>
+
+     			
+	<% else %>
+			<%= yield %>
+    		<% end %>
+      <div class="clear"></div>
+    </div>
+    
+    
+   <div class="footer01">
+	<div id="footerSlideButton"></div>
+    <div id="footerSlideButton2" style="display:none"></div>
+    <div class="bottom-nav-box" style="padding-bottom:0px;">
+     		<a href="http://aatmaninnovations.com/" class="bottom-nav" target="_blank">Proudly owned by Aatman Innovations Pvt. Ltd. Mumbai, India.</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= link_to("Privacy Policy", {:action =>'privacy'}, :class=>"bottom-nav") %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= link_to("Disclaimer", {:action =>'disclaimer'}, :class=>"bottom-nav") %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<%= link_to("Sitemap", {:action =>'sitemap'}, :class=>"bottom-nav") %>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;Best View - (1280x720) Latest Browsers<br>
+	</div>
+	
+        <div class="social-links" style="">
+	    <a href="https://www.facebook.com/pages/Simply-Knowledge/503843859656260" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image8','','/assets/social/facebook-hover.png',1)"><%= image_tag("social/facebook.png", :alt => 'facebook', :width => '13', :height => '13', :id => 'Image8', :border => '0')%></a>&nbsp;&nbsp;&nbsp;
+            <a href="https://twitter.com/AatmanWeb" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','/assets/social/twitter-hover.png',1)"><%= image_tag("social/twitter.png", :alt => 'twitter', :width => '13', :height => '13', :id => 'Image3', :border => '0')%></a>&nbsp;&nbsp;&nbsp;
+            <a href="www.youtube.com/user/simplyknowledge1" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image2','','/assets/social/youtube-hover.png',1)"><%= image_tag("social/youtube.png", :alt => 'youtube', :width => '13', :height => '13', :id => 'Image2', :border => '0')%></a>&nbsp;&nbsp;&nbsp;
+        </div>
+
+	    <%= link_to("Feedback/Testimonials", {:action =>'feedback'}, :class=>"bottom-nav-feedback") %>
+        <div style="clear:both;"></div>
+	<div id="footerSlideContent">
+		<strong style="color:#F00; font-size:12px;">*</strong>A strict action will be taken against any person/company found using the contents of this site in any form whatsoever.
+	</div>
+</div>
+
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41398988-1', 'simplyknowledge.com');
+  ga('send', 'pageview');
+
+</script>
+ 
+
+  </body>
+
+</html>
+

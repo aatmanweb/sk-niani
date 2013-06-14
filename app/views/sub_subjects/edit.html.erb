@@ -1,0 +1,29 @@
+<% @subsubjects_title = "Edit Page: #{@subsubjects.name}" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Update Sub Subject</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+
+<div class="innerpage-form-background">
+
+  <%= form_for(@subsubjects, :url => {:action => 'update', :id => @subsubjects.id, :subject_id => @subject.id}) do |f| %>
+  
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    
+    <div class="form-buttons">
+      <%= submit_tag "Update Sub Subject", :class => 'innerpage-form-button' %>
+
+ 
+    <div style="clear:both;"></div>
+    </div>
+    
+  <% end %>
+</div>

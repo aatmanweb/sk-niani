@@ -1,0 +1,27 @@
+<% @page_title = "Create Section" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'list', :page_id => @page.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Create Section</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+
+<div class="section new">
+
+  <%= form_for(:section, :url => {:action => 'create', :page_id => @page.id}) do |f| %>
+  
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    
+    <div class="form-buttons">
+      <%= submit_tag("Create Section") %>
+    </div>
+    
+  <% end %>
+</div>

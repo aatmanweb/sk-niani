@@ -1,0 +1,48 @@
+<% @subsubjects_title = "Pages List" %>
+
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to Subjects", {:controller => "subjects", :action => 'list'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Sub Subjects</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="height:60px;">
+<%= link_to("Add New Sub Subject", {:action => 'new', :subject_id => @subject.id}, :class => 'add-new-subject') %>
+</div>	
+<div style="clear:both;"></div>
+
+
+
+
+
+<div class="sub subject list">
+  
+
+  <table class="listing" summary="Sub Subject list">
+    <tr class="header-top">
+      <th>&nbsp;</th>
+      <th>Sub Subject</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+    <% @subsubjects.each do |subsubject| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= subsubject.position %></td>
+      <td><%= subsubject.name %></td>
+      <td class="center"><%= status_tag(subsubject.visible) %></td>
+            <td class="actions">
+        <%= link_to("Edit", {:action => 'edit', :id => subsubject.id, :subject_id => @subject.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => subsubject.id, :subject_id => @subject.id}, :class => 'action delete') %>
+      <%= link_to("Add Image", {:controller => 'images', :action => 'new', :imageable_id => subsubject.id, :imageable_type => 'SubSubject' }, :class => 'action show') %>
+<%= link_to("Add keyword", {:controller => 'search_eng_opts', :action => 'new', :meta_id => subsubject.id, :meta_type => 'SubSubject'}, :class => 'action show') %>
+
+</td>
+    </tr>
+    <% end %>
+  </table>
+</div>

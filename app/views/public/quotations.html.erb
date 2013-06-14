@@ -1,0 +1,311 @@
+<%= stylesheet_link_tag   "/assets/simply_css/quo_header" %>
+ <%= javascript_include_tag "/assets/simply_js/quotations/ready2.js" %>
+ <%= javascript_include_tag "/assets/simply_js/quotations/ajaxpg.js" %>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        toggleSubjectLetter('A');
+    });
+    function toggleSubjectLetter(letter) {
+        jQuery('div#subjectMenuItems')
+	.children('ul').hide()
+	.parent().children('ul.l' + (letter == '#' ? '_' : letter))
+	.show();
+        jQuery('div#subjectMenuTab ul.ltrs > li > a').each(function () {
+            var e = jQuery(this);
+            if (e.html() === letter)
+                e.parent().addClass('cur').siblings('li.cur').removeClass('cur');
+        });
+    }
+</script>
+
+  <%= render(:partial => 'layouts/slidenav', :locals => {:subjects => @subjects}) %>
+<% if @type == "author" %>
+	<% @selauthor.quoteimages.each do |authorimg| %>
+		<% @add = authorimg.image_url %>
+	<% end %>
+<% elsif @type == "topic" %>
+	<% @seltopic.quoteimages.each do |topicimg| %>
+		<% @add = topicimg.image_url %>
+	<% end %>
+<% else %>
+	<% @add = '/assets/quotations/quotation.jpg' %>
+<% end %>
+
+
+
+      <div class="quotation-band-bg">
+          <div class="quotation-band-title">Quotations</div>
+          <% if @type == "author" %>
+          	<div class="quotation-band-title2"><%= @selauthor.author_name %></div>
+          <% elsif @type == "topic" %>
+          	<div class="quotation-band-title2"><%= @seltopic.topic_name %></div>
+          <% elsif @type == "topviews" %>
+          	<div class="quotation-band-title2"><%= "Top Views" %></div>    
+          <% else %>
+            <div class="quotation-band-title2"><%= "SlideShow" %></div>      
+          <% end %>
+      </div>
+      <div class="quotation-subtitle" style="background:url(<%= @add %>) top left repeat-x;"></div>
+
+<style type="text/css">
+	body{background:url(/assets/quotations/quotation-bg5.jpg) center top fixed;}
+</style>
+<% if @keyword.nil? %>
+<% else %>
+      <% @keyword.each do |key| %>
+         <% @meta_keywords += key.keyword+", " %>
+      <% end %>
+<% end %>
+<% @authors.each do |t| %>
+	<% @meta_description += t.author_name+", "	%>						
+<% end %> 
+
+<div class="quotations-nav">      		
+	<div id="orng-navbar">
+		<div class="curve">
+			<ul class="nav main-links">
+            			<li class="with-sub-menu first" id="subject_menu">
+					<a href="#"> Authors</a>
+					<div class="sub mega" style="opacity: 1; display: none;" id="subjectMenuTab">
+    				    		<div class="mm-menu">
+        						<div class="mm-head">
+            				 			<div class="mm-index">
+               			 <!---<ul class="ltrs">-->
+           				<% @menu = '' %>
+                			<% @menu += '<ul class="ltrs">' %>
+                				<% ("a".."z").to_a.each do |letter| %>
+                         				<% @menu += '<li class=""><a onclick="toggleSubjectLetter(this.innerHTML);return false;">'+letter.capitalize+'</a></li>' %>
+						<% end %>              
+              				<% @menu += '</ul>' %>
+               				<%= @menu.html_safe %>
+                      		        </div>
+         				</div>
+        				<div class="mm-data cols_2" id="subjectMenuItems">
+       	  	  				<% ("a".."z").to_a.each do |letter| %>
+     							<% @authors.each do |author| %>
+								<% if author.author_name[0].capitalize == letter.capitalize %>	
+								<ul class="sub-menu with-counts l<%= letter.capitalize %>">	
+									<li>
+									<div style="float:left;">
+									  	<%= link_to(author.author_name, {:action => 'quotations', :id => author.id, :type => 'author'})%>
+					   				</div>
+									</li>
+								</ul>						
+								<% else %>
+								<% "Hello"%>
+								<% end %>
+							<% end %>						
+ 						<% end %>
+        
+        				</div>
+    					</div>
+					</div>
+
+			</li>
+
+            <li id="test" class="with-sub-menu">
+		<a href="#">Subjects</a>
+		<div class="sub mega" style="opacity: 1; display: none;" id="subjectMenuTab">
+    		    <div class="mm-menu">
+        		<div class="mm-head">
+             			<div class="mm-index">
+               <!---<ul class="ltrs">-->
+           			<% @menu = '' %>
+                		<% @menu += '<ul class="ltrs">' %>
+                		<% ("a".."z").to_a.each do |letter| %>
+                       			<% @menu += '<li class=""><a onclick="toggleSubjectLetter(this.innerHTML);return false;">'+letter.capitalize+'</a></li>' %>
+				<% end %>              
+              			<% @menu += '</ul>' %>
+               			<%= @menu.html_safe %>
+               	                </div>
+		         </div>
+        		<div class="mm-data cols_2" id="subjectMenuItems">
+     				 <% ("a".."z").to_a.each do |letter| %>
+     					<% @topics.each do |topic| %>
+						<% if topic.topic_name[0].capitalize == letter.capitalize %>	
+							<ul class="sub-menu with-counts l<%= letter.capitalize %>">	
+							<li>
+							<div style="float:left;">
+								 <%= link_to(topic.topic_name.split(' ').map {|w| w.capitalize }.join(' '), {:action => 'quotations', :id => topic.id, :type => 'topic'})%>
+							</div>
+							</li>
+							</ul>						
+						<% else %>
+							<% "Hello"%>
+						<% end %>
+					<% end %>
+				<% end %>
+               		</div>
+    			</div>
+			</div>
+		</li>
+            	<li class="with-sub-menu first"><%= link_to("Top Views", {:action => 'quotations',:type => 'topviews'})%></li>
+         	<li class="with-sub-menu first"><%= link_to("Slideshow", {:action => 'quotations',:type => 'slideshow'})%></li>
+		  
+		</ul> 
+		</div>
+		</div>
+            	</div>	
+     		<div id="eyebrow"></div>	
+
+     		<div class="quotation-wrapper" id="devices">
+     			<% if @type == "author" %>
+     				<div style="width:220px; z-index:2; position:absolute;">
+             			<p style="text-align:left; margin-left:40px; margin-top:30px;">
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @advertise.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Left") %>	      
+		<% if(t.adv_type == "image") %>
+	       	   <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%> 
+		<% else %>
+<object type="application/x-shockwave-flash" data="<%= asset_path(adv_path) %>" width="144" height="280">
+  <param name="movie" value="<%= asset_path(adv_path) %>"  />
+  <param name="wmode" value="transparent"  />
+  <img src="<%= asset_path(t.flashimage) %>" />
+</object>
+		<% end %>  	   
+            <% end %>             
+        <% end %>
+<!--------- advertisement code ends -------------------------------------------------------------------------------------------->
+								
+             			</p>
+					</div>
+     				<div class="quotation-wrapper-inner-page">
+     					<% if (@selquotes) %>
+     		 				<% @selquotes.each do |selquote| %>
+     		 	  				<div class="quotation-blog"  >
+                 					<div class="quote-icon">
+											<img src="/assets/quotations/quote-icon.png" width="50" height="41" />
+										</div>
+                					<div class="entry-top-fullwidth"></div>
+                    					<div class="entry-content-fullwidth">
+                   						<p class="quotation-text">
+                    							<%= selquote.quote %>                    	
+                    							<br /><br />
+                        				</p>                        
+                    					</div>
+                    					<div class="entry-bottom-page-fullwidth"> 
+                    					<div class="quote-tag">
+                        				<div class="quote-tag-front">
+											<a href="/public/quotations/<%= selquote.topic.id %>?type=topic" class="tag-link"><%= selquote.topic.topic_name %></a>
+												</div>
+                            			<div class="quote-tag-back"></div>
+                        			</div>
+                    					</div>
+               			</div>
+               		<% end %>
+               		<%= will_paginate @selquotes %>
+               	<% end %>
+               </div>
+      		<% elsif @type == "topic" %>      		       
+             		<div style="width:220px; z-index:2; position:absolute;">
+             			<p style="text-align:left; margin-left:40px; margin-top:30px;">
+
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @advertise.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Left") %>	      
+		<% if(t.adv_type == "image") %>
+	       	   <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%> 
+		<% else %>
+<object type="application/x-shockwave-flash" data="<%= asset_path(adv_path) %>" width="144" height="280">
+  <param name="movie" value="<%= asset_path(adv_path) %>"  />
+  <param name="wmode" value="transparent"  />
+  <img src="<%= asset_path(t.flashimage) %>" />
+</object>
+		<% end %>  	   
+            <% end %>             
+        <% end %>
+<!--------- advertisement code ends -------------------------------------------------------------------------------------------->
+
+
+             			</p>
+					</div>
+      		  <div class="quotation-wrapper-inner-page">
+      		  <% if (@selquotes) %>
+               <% @selquotes.each do |selquote| %>
+                			<div class="quotation-blog"  >
+                 			<div class="quote-icon">
+                 				<img src="/assets/quotations/quote-icon.png" width="50" height="41" />
+                 			</div>
+                				<div class="entry-top-fullwidth"></div>
+                    				<div class="entry-content-fullwidth">
+                   					<p class="quotation-text">
+                    						<%= selquote.quote %>                    	
+                    						<br /><br />
+                    	   				<span>-<%= selquote.author.author_name %>
+												<% if (selquote.info) != "" %>
+													"<%= selquote.info %>"
+												<% end %>
+													</span>
+                    	   				
+                        			</p>                       
+                    				</div>     
+                    				<div class="entry-bottom-page-fullwidth"> 
+                   
+                        		</div>              
+                     </div>
+                     
+               <% end %>
+             <%= will_paginate @selquotes %>
+					<% end %>               
+               </div>
+        
+			  	<% elsif @type == "topviews" %>
+				<div style="width:220px; z-index:2; position:absolute;">
+             			<p style="text-align:left; margin-left:40px; margin-top:30px;">
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @advertise.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Left") %>	      
+		<% if(t.adv_type == "image") %>
+	       	   <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%> 
+		<% else %>
+<object type="application/x-shockwave-flash" data="<%= asset_path(adv_path) %>" width="144" height="280">
+  <param name="movie" value="<%= asset_path(adv_path) %>"  />
+  <param name="wmode" value="transparent"  />
+  <img src="<%= asset_path(t.flashimage) %>" />
+</object>
+		<% end %>  	   
+            <% end %>             
+        <% end %>
+<!--------- advertisement code ends -------------------------------------------------------------------------------------------->
+								    	
+             			</p>
+					</div>
+			  	<div class="quotation-wrapper-inner-page">
+			  		<% @selquotes.each do |selquote| %>
+			  		
+						<div class="quotation-blog"  >
+                 		<div class="quote-icon"><img src="/assets/quotations/quote-icon.png" width="50" height="41" /></div>
+                			<div class="entry-top-fullwidth"></div>
+                    			<div class="entry-content-fullwidth">
+                   				<p class="quotation-text">
+                    					<%= selquote.quote %>                    	
+                    					<br /><br />
+                    		   		<span>-<%= selquote.author.author_name %></span>
+                       			</p>
+                        
+                    			</div>
+                    			<div class="entry-bottom-page-fullwidth"> 
+                    				<div class="quote-tag">
+                        			<div class="quote-tag-front"><a href="/public/quotations/<%= selquote.topic.id %>?type=topic" class="tag-link"><%= selquote.topic.topic_name %></a></div>
+                            			<div class="quote-tag-back"></div>
+                        		</div>
+                        	</div>
+                   </div>
+                  
+                <% end %>
+                 </div>
+             <% else %>
+            <iframe src='<%= root_url+'/slideshow/slideshow' %>' style="height:700px; width: 100%;" frameborder="0"> </iframe>
+        
+            <% end %>
+  
+            </div>         
+            

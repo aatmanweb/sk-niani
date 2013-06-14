@@ -1,0 +1,92 @@
+<% @page_title = "Quotes List" %>
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Listing quotes</div>
+
+<div style="clear:both;"></div>
+</div>
+<%= form_tag quotes_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+
+<div style='height:80px; background:#e2e2e2;'>
+<div style="float:left; margin-left:30px; margin-top:20px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px; ">
+Sort By Author&nbsp;&nbsp;<%= select_tag :first_select, options_from_collection_for_select(@authors, "id", "author_name"), :include_blank => true,
+      :'data-remote' => 'true',
+      :'data-url' => url_for(:controller => 'quotes', :action => 'sortbyauthor' ),
+      :'data-type' => 'json',
+      :onchange => "redirectToAuthor(this.value)",
+      :class => 'innerquotes-text-dropdown' 
+%>
+<%= javascript_tag do %>
+  function redirectToAuthor(authorId){
+     window.location = "<%= url_for(:controller => 'quotes', :action => 'sortbyauthor') %>/" + authorId+ "?id="+ authorId;
+  } 
+<% end %>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Sort By Topic&nbsp;&nbsp;<%= select_tag(:second_select, options_from_collection_for_select(@topics, "id", "topic_name"),:include_blank => true,
+      :'data-remote' => 'true',
+      :'data-url' => url_for(:controller => 'quotes', :action => 'sortbytopic' ),
+      :'data-type' => 'json',
+      :onchange => "redirectToTopic(this.value)",
+      :class => 'innerquotes-text-dropdown'  )
+%>
+<%= javascript_tag do %>
+  function redirectToTopic(topicId){
+     window.location = "<%= url_for(:controller => 'quotes', :action => 'sortbytopic') %>/" + topicId+ "?id="+ topicId;
+  } 
+<% end %>
+</div>
+<%= link_to 'Add New Quote', new_quote_path, :class => 'add-new-subject' %> 
+
+</div>
+<div class="subject list">
+
+<table>
+  <tr class="header-top">
+    <td>Topic</td>
+    <td>Author</td>
+    <td>Language</td>
+    <td>Title</td>
+    <td>Quote</td>
+    <td>Information</td>
+    <td>Publish on</td>
+    <td>Actions</td>
+  </tr>
+
+
+<% @quote.each do |quote| %>
+
+<tr class="<%= cycle('odd', 'even') %>">
+    
+      <td><%= quote.topic.topic_name %></td>
+      <td><%= quote.author.author_name %></td>
+      <td><%= quote.language %></td>
+      <td><%= quote.title %></td>
+      <td><%= quote.quote %></td>
+      <td><%= quote.info %></td>
+      <td><%= quote.publish_at %></td>
+      <td>
+	<%= link_to("Add Image", {:controller => 'quoteimages', :action => 'new', :quoteimageable_id => quote.id, :quoteimageable_type => 'Quote'}, :class => 'action show' ) %>
+	<%= link_to 'Show', quote, :class => 'action show2' %>
+	<%= link_to 'Edit', edit_quote_path(quote), :class => 'action edit' %>
+	<%= link_to 'Destroy', quote, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'action delete' %>
+	</td>
+
+  </tr>
+<% end %>
+</table>
+</div>
+<br/>
+
+<br/><br/>
+<%= will_paginate @quote %>
+    
+

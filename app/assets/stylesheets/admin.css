@@ -1,0 +1,175 @@
+/* Admin stylesheet       */
+/* loads after public.css */
+@font-face {
+	font-family: 'century-gothic';
+src: url('/assets/simply_css/fonts/gothic.ttf');
+src: url('/assets/simply_css/fonts/gothic.otf');
+}
+@font-face {
+	font-family: 'Kalinga';
+src:url('/assets/simply_css/fonts/kalinga.ttf');
+src:url('/assets/simply_css/fonts/Kalinga.otf');
+}
+
+
+/* Login Form */
+.login-logo{float:left; margin-left:50px; margin-top:20px; margin-bottom:20px; position:relative;}
+.login-wrapper{width:350px; height:auto; position:relative; float:left; background:#f9f9f9; margin-left:50px; margin-top:50px; margin-bottom:50px; padding:30px; }
+.input-login-text{width:330px; padding:10px; margin-top:20px;}
+.input-login-button{background:#fff; border:0; height:30px; width:50px; float:right; border:1px solid #db0e22; color:#db0e22; margin-top:30px; cursor:pointer; }
+
+/* innerPage Form */
+
+.dropdown-text{width:330px; padding:10px; margin-top:20px;}
+.input-login-button{background:#fff; border:0; height:30px; width:50px; float:right; border:1px solid #db0e22; color:#db0e22; margin-top:30px; cursor:pointer; }
+
+
+.innerpage-form-background{width:600px; padding:20px; height:auto; position:relative; background:#efefef; margin:20px auto 0 auto;}
+.innerpages-text-input{width:300px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px; border:1px solid #737173;}
+.innerpages-text-area{padding:1px; width:350px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:15px; border:1px solid #737173;}
+.innerpages-text-input2{width:148px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px; border:1px solid #737173;}
+.innerpages-text-dropdown{width:auto; padding-left:5px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px; border:1px solid #737173;}
+.innerquotes-text-dropdown{width:auto; padding-left:5px; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:14px; border:1px solid #737173; line-height:0; padding-top:-5px; padding-bottom:-5px;}
+
+.innerpage-form-button {
+    font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:12px;
+    padding:0 7px;
+    border: 1px solid #a5a6a5;
+    color: #212121;
+    background: #85a6ab;
+    cursor:pointer;
+}
+.innerpage-form-button:hover {
+    border: 1px solid #a5a6a5;
+    color: #212121;
+    background: #fff;
+}
+
+.regular-checkbox {
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 1px solid #737173;
+    padding: 9px;
+    display: inline-block;
+    position: relative;
+}
+
+.regular-checkbox:checked {
+    border: 1px solid #adb8c0;
+    color: #737173;
+}
+
+.regular-checkbox:checked:after {
+    content: '\2714';
+    font-size: 14px;
+    position: absolute;
+    top: 0px;
+    left: 3px;
+    color: #737173;
+}
+.result-text{font-size:14px; text-align:justify; color:#369; font-family:Kalinga, Arial, Helvetica, sans-serif;}
+.delete-result-text{font-size:16px; text-align:justify; color:#900; font-family:Kalinga, Arial, Helvetica, sans-serif;}
+.delete-result-text-2{font-size:16px; text-align:justify; color:#000; font-family:Kalinga, Arial, Helvetica, sans-serif;}
+
+/* scriptPage Form */
+
+.scriptpage-form-background{width:1000px; padding:20px; height:auto; position:relative; background:#efefef; margin:20px auto 0 auto;}
+
+/* Admin Manager */
+a.logout:link, a.logout:visited
+{width:auto; height:auto; padding:2px 10px 2px 40px; float:right; position:relative; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:12px; text-decoration:none; background:url(/assets/backend/logout.png) no-repeat left #069; color:#FFF; margin-right:30px;}
+a.logout:hover{background:url(/assets/backend/logout.png) no-repeat left #09C; }
+
+a.back-to-menu:link, a.back-to-menu:visited
+{width:auto; height:auto; padding:2px 10px 2px 30px; float:left; position:relative; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:12px; text-decoration:none; background:url(/assets/backend/back.png) no-repeat left #069; color:#FFF; margin-left:30px;}
+a.back-to-menu:hover{background:url(/assets/backend/back.png) no-repeat left #09C; }
+
+a.add-new-subject:link, a.add-new-subject:visited
+{width:auto; height:auto; padding:2px 10px; float:right; position:relative; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:12px; text-decoration:none; background:#4b8739; color:#FFF; margin-right:30px; margin-top:20px;}
+a.add-new-subject:hover{background:#769b5b; }
+
+.admin-menu-wrapper{width:74%; margin:80px 13% 20px 13%; height:auto; position:relative; text-align:center; float:left;}
+a.admin-menu-button:link, a.admin-menu-button:visited
+{width:200px; height:auto; font-family:century-gothic, Arial, Helvetica, sans-serif; font-size:16px; text-decoration:none; border:10px solid #C33; color:#FFF; padding:30px 20px 30px 70px; float: left; margin:3px;}
+a.admin-menu-button:hover{background:#C33; border:10px solid #bd2727; }
+
+
+
+/* Structure */
+*{margin:0; padding:0px;}
+#content h2 { width: 760px; text-align: center; }
+.top-linebar{width:auto; height:auto; padding:2px 25px; float:right; position:relative; font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:12px; background:#699; color:#FFF; margin-right:1px;}
+
+.subject-found{font-family:Kalinga, century-gothic, Arial, Helvetica, sans-serif; font-size:14px; color:#3d5163; float:left; padding-top:30px; padding-left:30px;}
+
+.menu .identity { text-align: center; }
+.menu ul { margin: 3em 250px; list-style: none;  }
+.menu ul li { margin-bottom: 1em; }
+
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* large action buttons */
+a.action { float: right; padding: 0px 7px;
+  background: #94B26F; color: #fff;
+  text-decoration: none; font-size: 0.8em; text-align: center; margin:1px; font-family:Kalinga, Arial, Helvetica, sans-serif;  }
+a.action:hover { background: #B6D491; }
+
+a.delete { float: right; padding: 0px 7px;
+  background: #cc6666; color: #fff;
+  text-decoration: none; font-size: 0.8em; text-align: center; margin:1px; font-family:Kalinga, Arial, Helvetica, sans-serif;  }
+a.delete:hover { background: #d27474; }
+
+
+a.edit { float: right; padding: 0px 7px;
+  background: #46a9a6; color: #fff;
+  text-decoration: none; font-size: 0.8em; text-align: center; margin:1px; font-family:Kalinga, Arial, Helvetica, sans-serif;  }
+a.edit:hover { background: #65bbb8; }
+
+a.show2 { float: right; padding: 0px 7px;
+  background: #cdcc60; color: #fff;
+  text-decoration: none; font-size: 0.8em; text-align: center; margin:1px; font-family:Kalinga, Arial, Helvetica, sans-serif;  }
+a.show2:hover { background: #65bbb8; }
+
+
+/* small action buttons */
+.actions { width: 200px; }
+.actions a.action { float: left; min-width: 3.5em; }
+
+/* CRUD */
+.notice { height: 1.25em; padding: 0.5em; text-align: center;
+  background: #dcdcdc; color: #4C2516; }
+.back-link { font-size: 0.8em; margin-bottom: 1em; }
+.form-buttons { text-align: center; margin: 1em 0; }
+
+.list table { clear: both; width: 100%; font-family:Kalinga, century-gothic, Arial, Helvetica, sans-serif; font-size:14px; }
+.list table tr td { padding:5px 20px;}
+.show table { clear: both; margin: 0 100px; width: 300px; }
+.show table.wide { width: 600px; margin: 0 50px; }
+.show table tr th { white-space: nowrap; padding-right: 5px;}
+.edit table, .new table { margin: 0 auto; }
+
+.header-top{ background: #5e858f; height:30px; font-family:Kalinga, century-gothic, Arial, Helvetica, sans-serif; font-size:12px; color:#fff;}
+.odd { background: #cfdde3; }
+.even { background: #f5f5f5; }
+
+.section + .section { padding-top: 0.5em; margin-top: 0.5em; 
+  border-top: 1px dotted #666666; }
+
+span.status { display: block; width: 15px; height: 15px; 
+  margin: 0.25em auto; padding: 0; border:0}
+span.status.true  { background:url(/assets/backend/check-visible.png) no-repeat; }
+span.status.false { background:url(/assets/backend/uncheck-invisible.png) no-repeat; }
+
+/* Errors */
+.fieldWithErrors { }
+.fieldWithErrors label { color: #AA0000; }
+.fieldWithErrors input { }
+#errorExplanation { width: 400px; padding: 0; margin: 0 auto 1.5em; 
+  border: 1px solid #AA0000; background-color: #FFFFFF; font-size: 12px; }
+#errorExplanation h2 { font-weight: bold; font-size: 12px;
+  padding: 5px 5px 5px 15px; margin: 0; width: 380px;
+  background-color: #AA0000; color: #FFFFFF; }
+#errorExplanation p { color: #333333; margin: 0; padding: 3px 0.5em; }
+#errorExplanation ul { margin-top: 0; }
+#errorExplanation ul li { list-style: square; }

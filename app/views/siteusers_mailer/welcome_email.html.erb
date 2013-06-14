@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+
+  </head>
+  <body>
+<div style='width:800px; height:auto; float:left; position:relative;'>
+<img src="http://localhost:3000/assets/mailer.jpg" width="800" />
+<div style="width:800px; height:auto;">
+    <p style="font-family:verdana, arial; font-size:14px;">Welcome to simplyknowledge.com, <%= @siteuser.username %></p>
+    <p>
+      You have successfully signed up to simplyknowledge.com,
+      your username is: <%= @siteuser.username %> <br/>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+</div>
+</div>
+  </body>
+</html>

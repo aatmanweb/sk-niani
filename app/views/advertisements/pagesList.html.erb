@@ -1,0 +1,30 @@
+<% @page_title = "Page List" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back To Select Location", {:controller => "advertisements", :action => 'index'}, :class => 'back-to-menu') %>
+<div class="top-linebar">Advertisement</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="subject list" style='margin-top: 50px;'>
+
+  <table class="listing" summary="Page list">
+	<tr class="header-top">      
+	      <th>page name</th>
+	      <th>Action</th>
+	</tr>
+ 	  <% for object in @object %>
+               <% if(object.name != "") %>
+	<tr class="<%= cycle('odd', 'even') %>">
+                  <td><%= object.name %></td>  
+                  <td><%= link_to('Add Advertisement',:action => 'sectionsList', :id => object.id, :location_type => @location_type) %></td>  
+       </tr>
+               <% end %>
+          <% end %>            
+   </table>
+</div>
+
+

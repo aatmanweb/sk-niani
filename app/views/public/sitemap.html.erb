@@ -1,0 +1,45 @@
+  <%= render(:partial => 'layouts/aside') %>
+	<div id="Wrapper-about">
+    <div id="contetWrap-about">
+        <div id="about-us">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                   
+                      <br></br><h2>Site Map</h2>
+                        <div id="about-entry">
+                            <ul style="margin-left: 30px; list-style-type: disc; color: red;">
+<li><a href='<%= root_url %>'>Home</a></li>
+<li><a href='<%= root_url+'public/aboutus' %>'>About us</a></li>
+<li><a href='<%= root_url %>'>Subjects</a>
+<ul style="margin-left: 35px; list-style-type: disc; color: red;">
+	<% @subjects.visible.sorted.each do |subject| %>
+		<% if subject.name == "Biographies" %>
+			<li><%= link_to(subject.name, {:action => 'show', :id => subject.id})%></li>
+				<ul style="margin-left: 40px; list-style-type: disc; color: red;">
+					<% @subsubjects.visible.sorted.each do |subsubject| %>
+				  			 <li><%= link_to(subsubject.name, {:action => 'showsubsubject', :id => subsubject.id})%></li>
+  			 		<% end %>
+				</ul>
+		<% elsif subject.name == "Quotations" %>
+  			 <li><%= link_to(subject.name, {:action => 'quotations', :id => subject.id})%></li>
+  		<% else %>
+  			 <li><%= link_to(subject.name, {:action => 'show', :id => subject.id})%></li>
+ 		<% end %>
+	<% end %>
+
+</ul>
+</li>
+<li><a>Platforms</a>
+<ul style="margin-left: 30px; list-style-type: disc; color: red;">
+<li><a href="#">Video</a></li>
+<li><a href="#">Audio</a></li>
+<li><a href="#">Books</a></li>
+<li><a href="#">Posters</a></li>
+</ul>
+</li>
+</ul>
+                        </div>
+     
+		</div>
+	</div>
+	<div style="clear:both;"></div>
+	</div>
+

@@ -1,0 +1,23 @@
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to 'Back', :action => 'show', :id => @keyword.id, :class => 'back-to-menu' %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Editing image</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<center>
+<br><br>
+<%= form_for :keyword, :url => {:controller => "search_eng_opts", :action => "update", :id => @keyword.id} do |f| %>
+   <%= render :partial => 'search_eng_opts/form', :locals => {:f => f} %>
+  <br><br>
+  <div class="form-buttons">
+		<%= f.submit({ :class => 'innerpage-form-button'})%>
+  </div>
+
+<% end %>
+</center>

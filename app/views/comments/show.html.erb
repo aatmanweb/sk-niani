@@ -1,0 +1,46 @@
+<div style="width:100%; height:auto; position:relative; background:#ccc;">
+
+<%= link_to("Back to List", {:action => 'index', :controller => 'comments'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Pages</div>
+
+<div style="clear:both;"></div>
+</div>
+
+<div style="height:60px;">
+
+
+
+</div>
+<div style="clear:both;"></div>
+
+<div class="page list">
+  
+
+  <table class="listing" summary="Page list">
+    <tr class="header-top">
+      <th>Name</th>
+      <th>Email id</th>
+      <th>Website</th>
+      <th>comment</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+    <% @comment.each do |f|%>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= f.name %></td>
+      <td><%= f.emailid %></td>
+      <td><%= f.website %></td>
+      <td class="center"><%= (f.comment).html_safe %></td>
+      <td class="center"><%= status_tag(f.visible) %></td>
+      <td class="actions">
+	<%= link_to('edit', {:controller => 'comments', :action => 'edit', :id => f.id}, :class => 'action edit')%>
+	<%= link_to('delete', {:action => 'delete',:id => f.id}, :class => 'action delete')%>
+
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

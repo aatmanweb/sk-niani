@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'index'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Show Topic</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+
+
+<div class="innerpage-form-background">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+<tr>
+    <td width="48%" align="right">Topic Name</td>
+    <td width="2%">&nbsp;</td>
+    <td width="50%" align="left"><p class="result-text"><%= @topic.topic_name %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td height="7"><%= link_to 'Edit', edit_topic_path(@topic), :class => 'action edit' %></td>
+    <td></td>
+    <td></td>
+    </tr>
+  </table>
+</div>
+
+

@@ -1,0 +1,129 @@
+<%= form_for(@quote) do |f| %>
+  <% if @quote.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
+
+      <ul>
+      <% @quote.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<center>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+  	<tr>
+    <td width="20%" align="right">&nbsp;</td>
+    <td width="4%">&nbsp;</td>
+    <td width="76%" align="left">&nbsp;</td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:topic_id, "Topic") %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.select(:topic_id, @topics.collect {|t| [t.topic_name, t.id]}, {}, { :class => 'innerpages-text-dropdown' } ) %>
+    <%= link_to 'Add Topic', {:controller => 'topics', :action => 'new'}, :class => 'action edit' %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:author_id, "Author") %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.select(:author_id, @authors.collect {|a| [a.author_name, a.id]}, {}, { :class => 'innerpages-text-dropdown' }) %>
+    <%= link_to 'Add Author', {:controller => 'authors', :action => 'new'}, :class => 'action edit' %>
+    </td>
+    </tr>
+
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:language, "Language") %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.radio_button(:language, "english", :checked => true) %>
+    <%= f.label(:langauge_eng, "English") %>
+    <%= f.radio_button(:language, "hindi") %><%= f.label(:langauge_hin, "Hindi") %>
+    </td>
+    </tr>
+    
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:title) %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.text_area :title, :size => "60x12", :class => 'innerpages-text-area' %>
+    </td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:quote) %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.text_area :quote, :size => "60x12", :class => 'innerpages-text-area' %>
+    </td>
+    </tr>
+    
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:info) %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.text_field :info, :class => 'innerpages-text-input' %>
+    </td>
+    </tr>
+    
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label :published_at %></td>
+    <td>&nbsp;</td>
+    <td align="left">
+    <%= f.text_field :publish_at_date, :class => 'datepicker', :size => 10, :maxlength => 10, :class => 'innerpages-text-input2' %>
+    <%= f.text_field :publish_at_time, :size => 5, :maxlength => 5, :class => 'innerpages-text-input2' %>
+    </td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+  
+</table>
+
+
+  <div class="actions">
+    <%= f.submit "Update", :class => 'innerpage-form-button' %>
+  </div>
+</center>
+<% end %>
+

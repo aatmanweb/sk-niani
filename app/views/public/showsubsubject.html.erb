@@ -1,0 +1,189 @@
+<%= stylesheet_link_tag   "/assets/simply_css/subjectpage",  "/assets/simply_css/subsubjectpage", "/assets/simply_css/jquery-ui"%>
+<style>
+@font-face {
+	font-family: 'century-gothic';
+src: url('/assets/simply_css/fonts/gothic.ttf');
+src: url('/assets/simply_css/fonts/gothic.otf');
+}
+@font-face {
+	font-family: 'Kalinga';
+src:url('/assets/simply_css/fonts/kalinga.ttf');
+src:url('/assets/simply_css/fonts/Kalinga.otf');
+}
+</style>
+<aside>
+	<ul class="sk-left-menu"><br/>
+		<% @subjects.visible.sorted.each do |subject| %>
+		        <% unless defined?(titles) %>
+		           <% @meta_keywords += subject.name+", " %>
+                        <% end %>			
+<% if subject.name == "Quotations" %>
+				 <li><%= link_to(subject.name, {:action => 'quotations', :id => subject.id})%></li>
+ 			<% else %>
+ 				 <li><%= link_to(subject.name, {:action => 'show', :id => subject.id})%></li>
+ 			<% end %>
+		<% end %>
+	</ul><br/><br/>
+</aside>
+
+<% if @keyword.nil? %>
+<% else %>
+      <% @keyword.each do |key| %>
+         <% @meta_keywords += key.keyword+", " %>
+      <% end %>
+<% end %>
+
+<% @pagename.each do |t| %>
+	<% @meta_description += t.popular_name+", "	%>						
+<% end %> 
+
+ <script>
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
+    </script>
+<div class="main-wrapper-inner">
+ <div class="biography-article">
+ 	<div style="margin-top:25px;">
+ 		<div class="biography-band-bg">
+			<div class="biography-band-title"><%= @subjectname.name %></div>
+			<div class="biography-band-title2"><%= @subsubjectid.name %></div>
+		</div>
+         <div class="biography-subtitle" style=" background:url(/assets/flash-bg-images/<%= @subsubjectid.name.gsub(' ','-')%>.jpg) left no-repeat;">              
+		<% @subsubjectid.images.each do |subsubjectimages| %>
+			<embed src="<%= asset_path(subsubjectimages.image_url) %>"  width="1500" height="150" wmode="opaque"/>
+		<% end%>
+
+	</div>
+	</div>
+	
+<div style="clear:both;"></div>
+<div class="biography-wrapper">
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @subsubjectid.advertisements.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Top") %>
+	      
+		<% if(t.adv_type == "image") %>
+	       	  <p style="text-align: center;">  <%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%> </p>
+		<% else %>
+		<!--   <embed src="<%= asset_path(adv_path) %>"  width="100%" height="100%" wmode="transparent" /> -->
+
+		   <div style="text-align: right; margin-right: 20px; width:330px; height:50px; float:right; background:url(<%= asset_path(t.flashimage) %>);">
+			<div style="clear:both;"></div>
+			<embed src="<%= asset_path(adv_path) %>"  width="330" height="55" wmode="transparent" />
+			<div style="clear:both;"></div>
+		   </div>
+
+		<% end %>  
+            <% end %>             
+        <% end %>
+<!--------- advertisement code ends -------------------------------------------------------------------------------------------->
+
+    
+            	<div id="tabs">
+                    <ul>
+                        <li><a href="#tabs-1">Updates</a></li>
+                        <li><a href="#tabs-2">A - Z</a></li>
+                    </ul>
+                    <div id="tabs-1">
+                        <div id="paginationdemo" class="demo">
+
+                <div id="paginationdemo" class="demo">
+
+                <div id="p1" class="pagedemo _current" style="display: block; ">
+		<% @subpages.sorted.each do |subpage| %>
+                  <div class="biography-box">
+                	<p id="gallery2">
+			<% subpage.images.each do |img| %>
+							<% if(img.imageable_id == subpage.id) %>
+						<%= link_to (image_tag(img.image_url , :width => '132', :height => '132', :class => 'img')).html_safe, {:action => 'showpages', :id => subpage.id} %>
+							<% end %>							
+							<%end%>
+
+							<span class="bio-head"><%= subpage.name %></span><br/>
+							<br><%= subpage.intro %><br>
+							<%= link_to("Read More", {:action => 'showpages', :id => subpage.id}, :class => 'readmore' )%>
+                  </p>
+ 
+                    <div style="clear:both;"></div>
+                </div>
+		<% end %>
+   <%= will_paginate  @subpages %>
+                
+				</div>
+				
+                <div style="clear:both"></div>         
+				</div>
+				
+                <div style="clear:both"></div>         
+		</div>
+    
+        <div style="clear:both"></div>
+     
+                    </div>
+<!--------- advertisement code start -------------------------------------------------------------------------------------------->
+	<% @subsubjectid.advertisements.each do |t| %>
+             <% adv_path = t.adv_url %>
+             <% adv_position = t.adv_position %>
+             <% if(adv_position == "Bottom") %>  
+	        <p style="text-align: center;"> 
+		<% if(t.adv_type == "image") %>
+	       	<%= image_tag(adv_path, :width => '330', :height => '55', :class => 'advertising01')%>
+		<% else %>
+		   <!-- <embed src="<%= asset_path(adv_path) %>"  width="100%" height="100%" wmode="transparent" /> -->
+
+		   <div style="text-align: right; margin-right: 20px;"><div style="clear:both;"></div>
+			<div style="clear:both;"></div>
+			<embed src="<%= asset_path(adv_path) %>"  width="330" height="55" wmode="transparent" />
+			<div style="clear:both;"></div>
+		   </div>
+		<% end %>
+ 		</p>	    
+             <% end %>             
+          <% end %>
+<!--------- advertisement code end -------------------------------------------------------------------------------------------->
+
+                    <div id="tabs-2">
+                              	<ul>
+			
+			<% cur_letter = '#' %>
+				<% @pagename.each do |pagename| %>
+				<% if(pagename.name) %>
+
+  					<% title_letter = pagename.name[0].capitalize.match(/[A-Z]/) ? pagename.name[0].capitalize : "#" %> 
+ 				
+	<% if title_letter != cur_letter %>
+
+   				 	<% cur_letter = title_letter %>
+    					<li style="background:url(/assets/simply_images/listing-line.png) repeat-x center; width:220px; margin-top:30px;"><p style="width: 20px; height: 17px; background: #ed1b24; -moz-border-radius: 50px; -webkit-border-radius: 50px; border-radius: 50px; text-align:center; color:#fff; font-weight:bold; font-size:10px; font-family:Arial, Helvetica, sans-serif; padding-bottom:3px;"><%= cur_letter %></p></li>
+  					<% end %>
+  					<li style="height:65px;"><p class = "aTozDataList" style="margin-left: 0px; margin-top:15px;"><span style="float: left;"><%= link_to(image_tag(pagename.atozimg_url), {:action => 'showpages', :id => pagename.id})%></span>
+					<span style="float: left; margin-top: 23px; margin-left: 15px;"><%= link_to(pagename.name, {:action => 'showpages', :id => pagename.id}) %><br /></span><div style="clear: both;"></div></p></li>
+  					
+<% end %>
+
+				<% end %> 
+	
+			</ul>
+			<div style="clear:both;"></div>
+                         
+                    </div>
+                    
+                </div>
+            	            
+            </div>
+
+	
+
+ <div class="subsubject-side-link">
+<ul class="categories-nav">
+<% @subsubjectname.visible.sorted.each do |subsubjectname| %>
+    <% @meta_description += subsubjectname.name+", " %>
+    <li style="border-top:1px dotted #999;"><%= link_to(subsubjectname.name, {:action => 'showsubsubject', :id => subsubjectname.id})%></li>
+<% end %>
+</div>
+  </div>
+</div>
+

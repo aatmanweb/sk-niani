@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag "/assets/simply_css/subjectpage" %>
+<aside>
+	<ul class="sk-left-menu"><br/>
+		<% @subjects.visible.sorted.each do |subject| %>
+		<% @meta_keywords += subject.name+", " %>
+		<% unless defined?(titles) %>
+		   <% @meta_description += subject.name+", " %>
+		<% end %>  
+				<% if subject.name == "Quotations" %>
+  			 <li><%= link_to(subject.name, {:action => 'quotations', :id => subject.id})%></li>
+  			 	<% else %>
+  			 	<li><%= link_to(subject.name, {:action => 'show', :id => subject.id})%></li>
+ 				<% end %>
+		<% end %>
+	</ul><br/><br/>
+</aside>

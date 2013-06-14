@@ -1,0 +1,14 @@
+<% @page_title = "Admin Login" %>
+
+<div style="width:100%; height:auto; background:url(/assets/backend/admin-login-bg.jpg) #db0e22; position:relative; padding:20px 0;">
+    <div class="login-wrapper">
+    	<div style="font-family:Arial, Helvetica, sans-serif; font-size:22px; text-align:left; ">SIGN IN</div>
+    	<%= form_tag(:action => 'attempt_login') do %>
+    	<%= text_field_tag 'username', nil, :class => 'input-login-text', :placeholder => 'Username' %>
+    	<%= password_field_tag 'password', nil, :class => 'input-login-text', :placeholder => 'Password' %>
+    	
+    	<%= submit_tag "Log In", :class => 'input-login-button' %>
+	<% end %>
+    </div>
+    <div style="clear:both;"></div>
+</div>

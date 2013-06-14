@@ -1,0 +1,4 @@
+<% @page_title = "Comments List" %>
+<% @comment.each do |f|%>
+<%= render(:partial => 'comments/form', :locals => {:f => f} ) %>
+<% end %>

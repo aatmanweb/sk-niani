@@ -1,0 +1,18 @@
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+<%= link_to 'Back', images_path, :class => 'back-to-menu' %>
+
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">New image</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="clear:both;"></div>
+
+
+<center>
+
+<%= render 'images/form' %>
+
+</center>

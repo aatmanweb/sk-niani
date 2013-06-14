@@ -1,0 +1,4 @@
+<%= render(:partial => 'layouts/slidenav', :locals => {:subjects => @subjects}) %>
+<% @pageid.sections.each do |sec| %>
+<%= sec.content.html_safe %>
+<% end %>

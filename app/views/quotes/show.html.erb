@@ -1,0 +1,103 @@
+<% @page_title = "Quotes Show" %>	
+<p id="notice"><%= notice %></p>
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'index'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">how Quote</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+  <table summary="Quote detail view">
+    <tr>
+    <td width="32%" align="right">Topic :</td>
+    <td width="2%">&nbsp;</td>
+    <td width="66%" align="left"><p class="result-text"><%= @quote.topic.topic_name %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Author :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.author.author_name %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Language :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.language %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right" valign="top">Title :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.title %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right" valign="top">Quote :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.quote %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right" valign="top">Information :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.info %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Publish On :</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @quote.publish_at %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <td align="right">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td align="left">
+	<%= link_to 'Edit', edit_quote_path(@quote), :class => 'action edit' %>
+	<%= link_to 'Back', quotes_path, :class => 'action edit' %>
+    </td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+  </table>
+</div>
+<br><br>
+

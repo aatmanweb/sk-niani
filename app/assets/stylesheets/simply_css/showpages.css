@@ -1,0 +1,106 @@
+#script-footer {
+    height: auto;
+    margin-top: 150px;
+    border-top: 2px solid rgb(200, 200, 200);
+    padding: 10px 0px;
+    border-bottom: 8px solid rgb(221, 42, 27);
+}
+#box1 {
+    border: 1px solid rgb(204, 204, 204);
+}
+.footer-link-quotes {
+    float: left;
+    width: 182px;
+    height: 100px;
+    position: relative;
+    padding: 20px;
+    background-image: -moz-linear-gradient(right bottom , rgb(253, 253, 253) 46%, rgb(235, 235, 235) 100%);
+}
+#box2 {
+    border-top: 1px solid rgb(204, 204, 204);
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.footer-link-quotes {
+    float: left;
+    width: 182px;
+    height: 100px;
+    position: relative;
+    padding: 20px;
+    background-image: -moz-linear-gradient(right bottom , rgb(253, 253, 253) 46%, rgb(235, 235, 235) 100%);
+}
+#box3 {
+    border-top: 1px solid rgb(204, 204, 204);
+    border-bottom: 1px solid rgb(204, 204, 204);
+    border-left: 1px solid rgb(204, 204, 204);
+}
+.footer-link-quotes {
+    float: left;
+    width: 182px;
+    height: 100px;
+    position: relative;
+    padding: 20px;
+    background-image: -moz-linear-gradient(right bottom , rgb(253, 253, 253) 46%, rgb(235, 235, 235) 100%);
+}
+.comments-header{
+    font-family: Kalinga,Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    color: rgb(237, 27, 36);
+    font-weight: lighter;
+    text-decoration: none;
+}
+.comment-name-box{
+	padding: 12px;
+	outline: medium none;
+	font-size: 12px;
+	line-height: 20px;
+	color: rgb(118, 119, 114);
+	margin: 0px 0px 20px;
+	max-width: 100%;
+	display: block;
+	width: 300px;
+	font-family:  'Helvetica Neue','Helvetica','Arial',sans-serif;
+	transition: all 0.2s ease-in-out 0s;
+	-moz-box-sizing: border-box;
+	border: 1px solid rgb(227, 227, 227); 
+}
+.comment-name-label{
+	width:70px;
+	padding-top:10px;
+	text-align:right;
+	font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif;
+	font-size:16px;
+	float:left;
+	position:relative;
+	margin: 10px auto;
+}
+.comment-button-label{
+    margin-top: 20px;
+    background-color: rgb(228, 22, 56);
+    font-family: 'Helvetica Neue','Helvetica','Arial',sans-serif;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    line-height: normal;
+    padding: 12px 20px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.comment-text-box{
+    padding: 12px;
+    outline: medium none;
+    font-size: 12px;
+    line-height: 20px;
+    color: rgb(118, 119, 114);
+    margin: 0px 0px 20px;
+    max-width: 100%;
+    display: block;
+    width: 100%;
+    font-family: 'Helvetica Neue','Helvetica','Arial',sans-serif;
+    transition: all 0.2s ease-in-out 0s;
+    -moz-box-sizing: border-box;
+    border: 1px solid rgb(227, 227, 227);
+}

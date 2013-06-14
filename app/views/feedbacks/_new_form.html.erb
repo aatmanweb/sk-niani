@@ -1,0 +1,27 @@
+
+<%= error_messages_for(@feedback) %>
+    <p class="comment-name-label">
+	<em><%= f.label(:name) %><span style="color:#dd2a1b;">*</span>:</em>
+    </p>
+   
+	<%= f.text_field(:name, :required => true, :class => "comment-name-box") %>
+   
+<div style="clear:both;"></div>
+    <p class="comment-name-label">
+	<em><%= f.label(:emailid) %><span style="color:#dd2a1b;">*</span>:</em>
+    </p>
+   
+	<%= f.email_field(:emailid, :required => true, :pattern => '[^@]+@[^@]+\.[a-zA-Z]{2,6}', :class => "comment-name-box") %>
+  
+<div style="clear:both;"></div>
+
+    <p class="comment-name-label">
+	<em><%= f.label(:feedback) %><span style="color:#dd2a1b;">*</span>:</em>
+    </p>
+<div id="langtext" >
+	<textarea id= "feedback_feedback"  cols="50" rows="3" name="feedback[feedback]"></textarea>
+</div>
+	
+	
+<div style="clear:both;"></div>
+

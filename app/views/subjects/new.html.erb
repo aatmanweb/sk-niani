@@ -1,0 +1,27 @@
+<% @page_title = "Create Subject" %>
+
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'list'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Create Subject</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+
+	<%= form_for(:subject, :url => {:action => 'create'}) do |f| %>
+	
+	<%= render(:partial => "form", :locals => {:f => f}) %>
+
+	<div class="form-buttons">
+	<%= submit_tag "create subject", :class => 'innerpage-form-button'%>
+	</div>
+<%end%>
+</div>
+

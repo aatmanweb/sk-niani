@@ -1,0 +1,13 @@
+<div style="width:100%; height:auto; position:relative; background:#ccc;">
+
+<%= link_to("Back to List", {:action => 'index'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+<div class="top-linebar">Update Feedback</div>
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+<%= render 'form' %>
+

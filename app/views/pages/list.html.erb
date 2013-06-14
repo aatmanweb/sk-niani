@@ -1,0 +1,55 @@
+<% @page_title = "Pages List" %>
+
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to Subjects List", {:controller => "subjects", :action => 'list' ,:id => @subject.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Pages</div>
+
+<div style="clear:both;"></div>
+</div>
+
+<div style="height:60px;">
+
+
+<%= link_to("Add New Page", {:action => 'new', :subject_id => @subject.id}, :class => 'add-new-subject') %>
+
+</div>
+<div style="clear:both;"></div>
+
+<div class="page list">
+  
+
+  <table class="listing" summary="Page list">
+    <tr class="header-top">
+      <th>&nbsp;</th>
+      <th>Page</th>
+      <th>Popular Name</th>
+      <th>Intro lines</th>
+      <th>Visible</th>
+      <th>&nbsp;&nbsp;Sections&nbsp;&nbsp;</th>
+      <th>Actions</th>
+    </tr>
+    <% @pages.each do |page| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= page.position %></td>
+      <td><%= page.name %></td>
+      <td><%= page.popular_name %></td>
+      <td><%= page.intro %></td>
+      <td class="center"><%= status_tag(page.visible) %></td>
+      <td class="center"><%= page.sections.size %></td>
+      <td class="actions">
+
+        <%= link_to("View Sections", {:controller => 'sections', :action => 'list', :page_id => page.id}, :class => 'action show') %>
+<%= link_to("Add Image", {:controller => 'images', :action => 'new', :imageable_id => page.id, :imageable_type => 'Page'}, :class => 'action show') %>
+        <%= link_to("Edit", {:action => 'edit', :id => page.id, :subject_id => @subject.id}, :class => 'action edit') %>
+        <%= link_to("Delete", {:action => 'delete', :id => page.id, :subject_id => @subject.id}, :class => 'action delete') %>
+<%= link_to("Add keyword", {:controller => 'search_eng_opts', :action => 'new', :meta_id => page.id, :meta_type => 'Page'}, :class => 'action show') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

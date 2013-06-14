@@ -1,0 +1,50 @@
+ <%= javascript_include_tag "/assets/simply_js/Gknowledge/vallenato.js" %>
+ <%= stylesheet_link_tag "/assets/simply_css/Gknowledge/vallenato.css" %>
+
+<%= render(:partial => 'layouts/slidenav', :locals => {:subjects => @subjects}) %>
+<style>
+@font-face {
+	font-family: 'Kalinga';
+src:url('/assets/simply_images/fonts/kalinga.ttf');
+src:url('/assets/simply_images/fonts/Kalinga.otf');
+}
+@font-face {
+	font-family: 'century-gothic';
+src: url('/assets/simply_images/fonts/gothic.ttf');
+src: url('/assets/simply_images/fonts/gothic.otf');
+}
+body{background:url(<%= @pageid.backimg_url %>) no-repeat right top <%= @pageid.backimg_color %> fixed;}
+</style>
+<div style="width:100%; height:100%;">
+<div style="width:1200px; height:auto; float:left;padding-bottom:50px;">
+    <div style="width:520px; height:auto; margin-top:100px; position:relative; float:left;">
+        <div style="width:auto; height:auto; float:left; margin-left:50px;">
+        <%= image_tag(@pageid.headimg_url, :width => '456', :height => '222') %>
+        </div>
+            <div style="width:450px; height:auto; float:left; margin-left:40px;">
+            <div style="padding:20px; height:auto; text-align:justify; font-family:kalinga, Arial, Helvetica, sans-serif; font-size:14px;color:#999999;">
+             <%= @pageid.intro.html_safe %>
+            </div>
+	    </div>
+
+        <div style="clear:both;"></div>
+    </div>
+    
+    <div style="width:550px; height:auto; float:left; background:rgba(255, 255, 255, 0.5); position:relative; margin-left:50px; margin-top:300px; padding:10px;
+	-moz-border-radius:5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;">
+    <% @pagesec.each do |pagesec| %>
+   	 <div class="accordion-header"><%= pagesec.name %></div>
+			
+		<div class="accordion-content">
+		
+                		<%= pagesec.content.html_safe %>
+                	 
+                
+              <div style="clear:both;"></div>
+	    </div>
+	<% end %>		
+   </div>
+</div>
+</div>

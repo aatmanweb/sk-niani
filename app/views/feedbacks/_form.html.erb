@@ -1,0 +1,67 @@
+<%= form_for(@feedback) do |f| %>
+  <% if @feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@feedback.errors.count, "error") %> prohibited this feedback from being saved:</h2>
+
+      <ul>
+      <% @feedback.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+  <tr>
+    <td width="16%" align="right">&nbsp;</td>
+    <td width="4%">&nbsp;</td>
+    <td width="74%" align="left">&nbsp;</td>
+    </tr>
+ <tr>
+    <td align="right"><%= f.label(:name) %></td>
+    <td>&nbsp;</td>
+    <td><%= f.text_field(:name, :class => 'innerpages-text-input') %></td>
+    </tr>
+   <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+ 
+    <tr>
+    <td align="right"><%= f.label(:emailid) %></td>
+    <td>&nbsp;</td>
+    <td><%= f.text_field(:name, :class => 'innerpages-text-input') %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:feedback) %></td>
+    <td>&nbsp;</td>
+    <td><%= f.text_area(:feedback, :cols => 50, :rows => 30,  :class => 'ckeditor innerpages-text-area') %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+    <tr>
+    <td align="right"><%= f.label(:visible) %></td>
+    <td>&nbsp;</td>
+    <td><%= f.check_box(:visible, :class => 'regular-checkbox') %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+</table>
+  <div class="form-buttons">
+    <%= submit_tag "Update Feedback", :class => 'innerpage-form-button' %>
+  </div>
+<% end %>
+

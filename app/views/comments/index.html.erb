@@ -1,0 +1,35 @@
+<% @page_title = "Comments List" %>
+<div style="width:100%; height:auto; position:relative; background:#ccc;">
+
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Pages containing comments</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="height:60px;">
+
+
+</div>
+
+<div style="clear:both;"></div>
+
+
+<div class="subject list">
+  	
+  <table class="listing" summary="Subject list">
+    <tr class="header-top">
+      <th>Page</th>
+      <th>Subject</th>
+    </tr>
+    <% @subjects.each do |f| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= f.page.name%></td>
+      <td class="actions">
+	  <%= link_to("View Comments", {:controller => 'Comments', :action => 'show', :page_id => f.page.id}, :class => 'action view') %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

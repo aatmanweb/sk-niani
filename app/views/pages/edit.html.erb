@@ -1,0 +1,26 @@
+<% @page_title = "Edit Page: #{@page.name}" %>
+
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'list', :subject_id => @subject.id}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Update Page</div>
+
+<div style="clear:both;"></div>
+</div>
+
+
+<div class="innerpage-form-background">
+
+  <%= form_for(:page, :url => {:action => 'update', :id => @page.id, :subject_id => @subject.id}) do |f| %>
+  
+    <%= render(:partial => 'form', :locals => {:f => f}) %>
+    
+    <div class="form-buttons">
+    <%= submit_tag "update subject", :class => 'innerpage-form-button' %>
+    </div>
+    
+  <% end %>
+</div>

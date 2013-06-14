@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to List", {:action => 'index'}, :class => 'back-to-menu') %>
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+<div class="top-linebar">Show Subject Image</div>
+
+<div style="clear:both;"></div>
+</div>
+
+<div class="innerpage-form-background">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0" style="font-family:Kalinga, Arial, Helvetica, sans-serif; font-size:16px;">
+    <tr>
+    <td width="20%" align="right">Image Name</td>
+    <td width="2%">&nbsp;</td>
+    <td width="78%" align="left"><p class="result-text"><%= @image.name %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Image Ur</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><embed src="<%= asset_path(@image.image_url) %>" style="width:450px;"/></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Imageable ID</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @image.imageable_id %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Imageable type</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @image.imageable_type %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Created at</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @image.created_at %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+    <tr>
+    <td align="right">Updated at</td>
+    <td>&nbsp;</td>
+    <td align="left"><p class="result-text"><%= @image.updated_at %></p></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td><%= link_to 'Edit', edit_image_path(@image), :class => 'action edit' %></td>
+    </tr>
+    <tr>
+    <td height="7"></td>
+    <td></td>
+    <td></td>
+    </tr>
+
+  </table>
+</div>

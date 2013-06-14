@@ -1,0 +1,50 @@
+<div style='width:100%; height:auto; position:relative; background:#ccc;'>
+
+<%= link_to("Back to Menu", {:controller => 'access', :action => 'menu'}, :class => 'back-to-menu') %>
+
+<%= link_to("Logout", {:controller => 'access', :action => 'logout'}, :class => 'logout')%>
+
+<div class="top-linebar">Listing Quotes Images</div>
+
+<div style="clear:both;"></div>
+</div>
+<div style="height:60px;">
+<%= link_to 'New Image', new_image_path, :class => 'add-new-subject' %>
+</div>	
+<div style="clear:both;"></div>
+
+<%= form_tag images_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+  </p>
+<% end %>
+
+
+<div class="subject list">
+  	
+  <table class="listing" summary="Subject list">
+    <tr class="header-top">
+      <th>Image Name</th>
+      <th>Image url</th>
+      <th>Reference ID</th>
+      <th>Reference Type</th>
+      <th>Actions</th>
+    </tr>
+    <% @images.each do |image| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= image.name %></td>
+      <td><%= image.image_url %></td>
+      <td class="center"><%= image.imageable_id %></td>
+      <td class="center"><%= image.imageable_type %></td>
+      <td class="center"><%= link_to 'Show', image, :class => 'action show2' %>
+	<%= link_to 'Edit', edit_image_path(image), :class => 'action edit' %>
+	<%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'action delete' %></td>
+      
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate @images %>
+

@@ -1,0 +1,34 @@
+.aTozData{
+width: 40px;
+height: 40px; 
+background: #ed1b24; 
+-moz-border-radius: 50px; 
+-webkit-border-radius: 40px; 
+border-radius: 40px; 
+text-align:center; 
+color:#FFF; 
+font-size:30px; 
+font-family:century-gothic, Arial, Helvetica, sans-serif; 
+margin-top:10px;
+}
+.aTozNoData{
+width: 40px; 
+margin-top: 10px; 
+height: 40px; 
+background: #c4c4c4; 
+-moz-border-radius: 40px; 
+-webkit-border-radius: 50px; 
+border-radius: 40px; 
+text-align:center; 
+color:#FFF; 
+font-size:30px; 
+font-family:century-gothic, Arial, Helvetica, sans-serif;
+}
+.aTozDataList{
+font-family:century-gothic, Kalinga, Arial, Helvetica, sans-serif; 
+font-size:20px; 
+color:#333; 
+height:auto; 
+position:relative; 
+margin:10px 0 0 10px;
+}
